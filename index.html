@@ -183,7 +183,10 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
       <div class="glass" style="padding:36px">
         <div class="icon-circle ic-green" style="margin-bottom:20px">S</div>
         <h3 class="h3" style="color:#86EFAC">Skill（技能）</h3>
-        <p class="body">Agent 學會的招式。每個 Skill 解決一個特定問題，像手機 App。查營收是一個 Skill，生成圖表是另一個。</p>
+        <p class="body">教會 Agent 的固定工作流程。在 AGENTS.md 定義 SOP，Agent 記憶後就能重複執行。</p>
+        <div style="margin-top:12px;padding:10px 16px;border-radius:10px;background:rgba(34,197,94,0.1)">
+          <p class="small" style="color:#86EFAC">例：「查營收產圖表」就是一個 Skill</p>
+        </div>
       </div>
       <div class="glass" style="padding:36px">
         <div class="icon-circle ic-orange" style="margin-bottom:20px">M</div>
@@ -300,6 +303,10 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
         <div class="feature-row"><div class="feature-dot" style="background:#8B5CF6"></div><div><p style="font-size:21px"><strong style="color:var(--text)">LanceDB 語義記憶</strong></p><p class="small">Agent 能記住 Schema、歷史分析結果</p></div></div>
         <div class="feature-row"><div class="feature-dot" style="background:#22C55E"></div><div><p style="font-size:21px"><strong style="color:var(--text)">Browser 自動化 (ocb)</strong></p><p class="small">操控瀏覽器：截圖、登入、填表</p></div></div>
         <div class="feature-row"><div class="feature-dot" style="background:#06B6D4"></div><div><p style="font-size:21px"><strong style="color:var(--text)">Telegram 整合</strong></p><p class="small">透過 Cloudflare Workers Proxy 推送</p></div></div>
+        <div style="margin-top:12px;padding:16px 20px;border-radius:12px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15)">
+          <p style="font-size:19px;color:#86EFAC"><strong>工作流 ≈ Skill</strong></p>
+          <p class="small" style="color:var(--text-muted);margin-top:4px">在 AGENTS.md 定義的固定流程，Agent 記憶後重複執行，概念上等同於 Skill（可重用的技能模組）</p>
+        </div>
       </div>
       <div class="flex-1" style="display:flex;flex-direction:column;gap:24px">
         <div style="padding:40px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(239,68,68,0.08));border:1px solid rgba(245,158,11,0.2);flex:1">
