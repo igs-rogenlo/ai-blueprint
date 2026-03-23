@@ -266,6 +266,67 @@ body { font-family:'Noto Sans TC',sans-serif; background:#0f0f1a; color:#1a1a2e;
   </div>
 </div>
 
+<!-- Slide 4.5: OpenClaw Framework -->
+<div class="slide light">
+  <h2>OpenClaw 框架</h2>
+  <div class="sub">我們用來打造和管理所有 Agent 的基礎架構</div>
+  <div class="split">
+    <div class="split-left">
+      <div class="card blue" style="height:100%;padding:50px;">
+        <h3 style="font-size:28px;margin-bottom:30px;">什麼是 OpenClaw？</h3>
+        <div style="font-size:22px;color:#555;line-height:2;">
+          <p>OpenClaw 是我們自建的 <strong>Agent 管理框架</strong>，提供統一的方式來：</p>
+          <div style="margin-top:16px;">
+            <div>&#x1F916; <strong>定義 Agent</strong> — 透過 AGENTS.md 設定每個 Agent 的任務和工具</div>
+            <div>&#x1F50C; <strong>串接 MCP</strong> — 統一管理資料庫和工具連接</div>
+            <div>&#x23F0; <strong>Cron 排程</strong> — 設定 Agent 定時自動執行任務</div>
+            <div>&#x1F9E0; <strong>記憶系統</strong> — LanceDB 語義記憶，Agent 能記住上下文</div>
+            <div>&#x1F310; <strong>Browser 自動化</strong> — ocb 指令操控瀏覽器</div>
+            <div>&#x1F4E8; <strong>Telegram 整合</strong> — 透過 Cloudflare Workers Proxy 推送訊息</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="split-right">
+      <div class="card orange" style="height:50%;padding:40px;margin-bottom:20px;">
+        <h3 style="font-size:28px;margin-bottom:20px;">&#x23F0; Cron 排程功能</h3>
+        <div style="font-size:22px;color:#555;line-height:1.8;">
+          <p>Agent 不只能對話互動，還能<strong>定時自動執行</strong>：</p>
+          <div style="margin-top:12px;">
+            <div style="padding:8px 16px;background:#fff7ed;border-radius:8px;margin-bottom:8px;">
+              &#x1F4CA; 數據 Agent — 每天早上自動產出<strong>數據日報</strong>
+            </div>
+            <div style="padding:8px 16px;background:#fff7ed;border-radius:8px;margin-bottom:8px;">
+              &#x1F4CB; pm-tracker — 每天自動掃描專案狀態產出<strong>健康報表</strong>
+            </div>
+            <div style="padding:8px 16px;background:#fff7ed;border-radius:8px;">
+              &#x1F4E8; 自動推送到 Telegram，不需人工觸發
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card green" style="height:calc(50% - 20px);padding:40px;">
+        <h3 style="font-size:28px;margin-bottom:20px;">架構一覽</h3>
+        <div style="font-size:20px;color:#555;text-align:center;">
+          <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <div class="tag purple">AGENTS.md</div>
+            <span style="font-size:24px;">+</span>
+            <div class="tag blue">MCP Servers</div>
+            <span style="font-size:24px;">+</span>
+            <div class="tag orange">Cron 排程</div>
+            <span style="font-size:24px;">+</span>
+            <div class="tag green">記憶系統</div>
+          </div>
+          <div style="margin-top:16px;font-size:28px;color:#667eea;">&#x2193;</div>
+          <div style="display:inline-block;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:14px 32px;border-radius:40px;font-size:22px;font-weight:700;margin-top:8px;">
+            OpenClaw Agent Session
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Slide 5: Four Pillars -->
 <div class="slide light">
   <h2>四大推動方向</h2>
@@ -305,7 +366,7 @@ body { font-family:'Noto Sans TC',sans-serif; background:#0f0f1a; color:#1a1a2e;
         <div style="font-size:22px;color:#555;line-height:2;">
           <div>&#x1F50D; 自然語言查詢 → 自動轉 SQL</div>
           <div>&#x1F4CA; 自動生成折線圖 / 柱狀圖 / 圓餅圖</div>
-          <div>&#x1F4C5; 日報排程，定時推送到 Telegram</div>
+          <div>&#x1F4C5; <strong>Cron 日報排程</strong>，每天定時自動推送到 Telegram</div>
           <div>&#x1F4B0; 成本控管：每次查詢上限 NT$60</div>
           <div>&#x1F9E0; LanceDB 語義記憶，記住 Schema</div>
         </div>
@@ -418,7 +479,7 @@ body { font-family:'Noto Sans TC',sans-serif; background:#0f0f1a; color:#1a1a2e;
   <div class="sub">Agent 每天自動產出，推送到 Telegram</div>
   <div style="max-width:1000px;margin:0 auto;">
     <div class="card" style="padding:50px;border-left:6px solid #667eea;">
-      <div style="font-size:20px;color:#888;margin-bottom:24px;">&#x1F4CB; 2026-03-22 專案健康 Dashboard</div>
+      <div style="font-size:20px;color:#888;margin-bottom:24px;">&#x1F4CB; 2026-03-22 專案健康 Dashboard <span style="background:#ede9fe;color:#8b5cf6;padding:4px 12px;border-radius:8px;font-size:16px;margin-left:8px;">&#x23F0; Cron 每日自動產出</span></div>
       <div style="font-size:24px;line-height:2.2;">
         <div style="padding:12px 20px;background:#fee2e2;border-radius:12px;margin-bottom:12px;">
           &#x1F534; <strong>逾期：</strong>P-042 SS老虎機 測試階段逾期 3 天
