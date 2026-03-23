@@ -4,322 +4,437 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>部門 AI 推動藍圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Noto Sans TC',sans-serif; background:#0f0f1a; color:#1a1a2e; }
-.slide {
-  width:1920px; height:1080px; position:relative; overflow:hidden;
-  page-break-after:always; margin:0 auto 20px;
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0F172A;--surface:#1E293B;--glass:rgba(255,255,255,0.06);
+  --glass-border:rgba(255,255,255,0.1);--glass-hover:rgba(255,255,255,0.1);
+  --text:#F8FAFC;--text-muted:#94A3B8;--text-dim:#64748B;
+  --accent:#667EEA;--accent2:#764BA2;--green:#22C55E;--red:#EF4444;
+  --orange:#F59E0B;--cyan:#06B6D4;--pink:#EC4899;
+  --blur:16px;--radius:20px;
 }
-/* Slide 1 - Title */
-.s1 {
-  background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-  display:flex; align-items:center; justify-content:center; text-align:center;
+body{font-family:'Noto Sans TC','DM Sans',sans-serif;background:var(--bg);color:var(--text)}
+h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
+
+.slide{width:1920px;height:1080px;position:relative;overflow:hidden;page-break-after:always;margin:0 auto 4px}
+
+/* === Backgrounds === */
+.bg-hero{background:linear-gradient(135deg,#0F172A 0%,#1a1040 40%,#2d1b69 70%,#1a1040 100%)}
+.bg-1{background:linear-gradient(160deg,#0F172A 0%,#162032 50%,#0F172A 100%)}
+.bg-2{background:linear-gradient(160deg,#0F172A 0%,#1a2540 50%,#0F172A 100%)}
+.bg-3{background:linear-gradient(160deg,#0F172A 0%,#1c1f3a 50%,#0F172A 100%)}
+
+/* Animated gradient orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.3;pointer-events:none}
+.orb-1{width:600px;height:600px;background:#667EEA;top:-200px;right:-100px}
+.orb-2{width:500px;height:500px;background:#764BA2;bottom:-200px;left:-100px}
+.orb-3{width:400px;height:400px;background:#22C55E;top:50%;right:10%;opacity:0.15}
+.orb-4{width:350px;height:350px;background:#F59E0B;bottom:10%;left:20%;opacity:0.12}
+
+/* === Glass === */
+.glass{
+  background:var(--glass);backdrop-filter:blur(var(--blur));-webkit-backdrop-filter:blur(var(--blur));
+  border:1px solid var(--glass-border);border-radius:var(--radius);
 }
-.s1 .content { color:white; }
-.s1 h1 { font-size:96px; font-weight:900; letter-spacing:4px; margin-bottom:30px; text-shadow:0 4px 20px rgba(0,0,0,0.3); }
-.s1 .subtitle { font-size:36px; font-weight:300; opacity:0.9; margin-bottom:20px; }
-.s1 .date { font-size:24px; opacity:0.6; }
-.s1::before {
-  content:''; position:absolute; top:-200px; right:-200px;
-  width:600px; height:600px; border-radius:50%;
-  background:rgba(255,255,255,0.08);
-}
-.s1::after {
-  content:''; position:absolute; bottom:-300px; left:-100px;
-  width:800px; height:800px; border-radius:50%;
-  background:rgba(255,255,255,0.05);
+.glass-solid{
+  background:rgba(30,41,59,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);
 }
 
-/* Common light slides */
-.light {
-  background:linear-gradient(180deg,#f8f9ff 0%,#e8ecf8 100%);
-  padding:80px 100px;
-}
-.light h2 {
-  font-size:64px; font-weight:900; color:#1a1a2e;
-  margin-bottom:12px;
-}
-.light .sub { font-size:24px; color:#888; margin-bottom:50px; }
+/* === Layout === */
+.pad{padding:80px 100px}
+.flex{display:flex}.gap-20{gap:20px}.gap-24{gap:24px}.gap-30{gap:30px}.gap-40{gap:40px}
+.flex-1{flex:1}.items-center{align-items:center}.justify-center{justify-content:center}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px}
+.text-center{text-align:center}
 
-/* Cards */
-.cards { display:flex; gap:30px; }
-.card {
-  flex:1; border-radius:24px; padding:40px;
-  box-shadow:0 8px 32px rgba(0,0,0,0.08);
-  background:white; position:relative; overflow:hidden;
-}
-.card::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:6px;
-}
-.card.blue::before { background:linear-gradient(90deg,#4a9eed,#667eea); }
-.card.orange::before { background:linear-gradient(90deg,#f59e0b,#ef4444); }
-.card.green::before { background:linear-gradient(90deg,#22c55e,#06b6d4); }
-.card.purple::before { background:linear-gradient(90deg,#8b5cf6,#ec4899); }
-.card.red::before { background:linear-gradient(90deg,#ef4444,#f59e0b); }
-.card h3 { font-size:32px; font-weight:700; margin-bottom:16px; }
-.card p { font-size:22px; color:#555; line-height:1.6; }
-.card .icon {
-  width:72px; height:72px; border-radius:18px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:36px; margin-bottom:20px; color:white;
-}
-.card.blue .icon { background:linear-gradient(135deg,#4a9eed,#667eea); }
-.card.orange .icon { background:linear-gradient(135deg,#f59e0b,#ef4444); }
-.card.green .icon { background:linear-gradient(135deg,#22c55e,#06b6d4); }
-.card.purple .icon { background:linear-gradient(135deg,#8b5cf6,#ec4899); }
-.card.red .icon { background:linear-gradient(135deg,#ef4444,#f59e0b); }
-.card.blue h3 { color:#4a9eed; }
-.card.orange h3 { color:#f59e0b; }
-.card.green h3 { color:#22c55e; }
-.card.purple h3 { color:#8b5cf6; }
-.card.red h3 { color:#ef4444; }
+/* === Typography === */
+.title{font-size:88px;font-weight:700;letter-spacing:-2px;line-height:1.1}
+.h2{font-size:56px;font-weight:700;letter-spacing:-1px;margin-bottom:8px}
+.h3{font-size:28px;font-weight:600;margin-bottom:16px}
+.subtitle{font-size:28px;color:var(--text-muted);font-weight:400;margin-bottom:48px}
+.body{font-size:22px;color:var(--text-muted);line-height:1.7}
+.small{font-size:18px;color:var(--text-dim)}
 
-/* Grid */
-.grid2x2 { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
-.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:30px; }
+/* === Components === */
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 18px;
+  border-radius:50px;font-size:16px;font-weight:500;
+  background:rgba(102,126,234,0.15);color:#A5B4FC;border:1px solid rgba(102,126,234,0.2);
+}
+.tag{
+  display:inline-block;padding:8px 16px;border-radius:10px;
+  font-size:17px;font-weight:500;
+}
+.tag-blue{background:rgba(59,130,246,0.15);color:#93C5FD;border:1px solid rgba(59,130,246,0.2)}
+.tag-green{background:rgba(34,197,94,0.15);color:#86EFAC;border:1px solid rgba(34,197,94,0.2)}
+.tag-purple{background:rgba(139,92,246,0.15);color:#C4B5FD;border:1px solid rgba(139,92,246,0.2)}
+.tag-orange{background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.2)}
+.tag-red{background:rgba(239,68,68,0.15);color:#FCA5A5;border:1px solid rgba(239,68,68,0.2)}
+.tag-cyan{background:rgba(6,182,212,0.15);color:#67E8F9;border:1px solid rgba(6,182,212,0.2)}
 
-/* Flow */
-.flow { display:flex; align-items:center; justify-content:center; gap:16px; margin:40px 0; }
-.flow-step {
-  background:white; border-radius:20px; padding:30px 28px;
-  text-align:center; box-shadow:0 4px 20px rgba(0,0,0,0.08);
-  min-width:200px;
+/* Icon circles */
+.icon-circle{
+  width:56px;height:56px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:700;color:white;flex-shrink:0;
 }
-.flow-step .label { font-size:20px; font-weight:700; margin-top:12px; }
-.flow-step .desc { font-size:16px; color:#888; margin-top:6px; }
-.flow-arrow { font-size:36px; color:#667eea; font-weight:900; }
+.ic-blue{background:linear-gradient(135deg,#3B82F6,#667EEA)}
+.ic-green{background:linear-gradient(135deg,#22C55E,#06B6D4)}
+.ic-orange{background:linear-gradient(135deg,#F59E0B,#EF4444)}
+.ic-purple{background:linear-gradient(135deg,#8B5CF6,#EC4899)}
+.ic-red{background:linear-gradient(135deg,#EF4444,#F59E0B)}
+.ic-cyan{background:linear-gradient(135deg,#06B6D4,#3B82F6)}
 
-/* Chat bubbles */
-.chat { max-width:900px; }
-.bubble {
-  padding:24px 32px; border-radius:20px; margin-bottom:20px;
-  font-size:24px; line-height:1.5; max-width:700px;
-}
-.bubble.user {
-  background:linear-gradient(135deg,#667eea,#764ba2);
-  color:white; margin-left:auto; border-bottom-right-radius:4px;
-}
-.bubble.agent {
-  background:white; color:#333;
-  box-shadow:0 4px 16px rgba(0,0,0,0.08);
-  border-bottom-left-radius:4px;
-}
-.bubble .role { font-size:16px; font-weight:700; margin-bottom:8px; opacity:0.7; }
-
-/* Tags */
-.tags { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
-.tag {
-  padding:10px 20px; border-radius:12px; font-size:18px; font-weight:500;
-}
-.tag.blue { background:#e8f0fe; color:#4a9eed; }
-.tag.red { background:#fee2e2; color:#ef4444; }
-.tag.green { background:#d1fae5; color:#059669; }
-.tag.purple { background:#ede9fe; color:#8b5cf6; }
-.tag.orange { background:#fef3c7; color:#d97706; }
-.tag.cyan { background:#cffafe; color:#0891b2; }
+/* Accent lines */
+.accent-line{width:60px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));margin-bottom:24px}
 
 /* Status cards */
-.status-card {
-  border-radius:20px; padding:30px; color:white;
-  display:flex; flex-direction:column; gap:8px;
+.status{border-radius:16px;padding:24px 28px;color:white}
+.status-red{background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(239,68,68,0.05));border:1px solid rgba(239,68,68,0.3)}
+.status-blue{background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(59,130,246,0.05));border:1px solid rgba(59,130,246,0.3)}
+.status-yellow{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.3)}
+.status-green{background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(34,197,94,0.05));border:1px solid rgba(34,197,94,0.3)}
+
+/* Chat bubbles */
+.bubble{padding:20px 28px;border-radius:18px;font-size:22px;line-height:1.5;margin-bottom:16px;max-width:680px}
+.bubble-user{
+  background:linear-gradient(135deg,#667EEA,#764BA2);color:white;
+  margin-left:auto;border-bottom-right-radius:4px;
 }
-.status-card h4 { font-size:24px; font-weight:700; }
-.status-card p { font-size:18px; opacity:0.9; }
-.status-card.s-red { background:linear-gradient(135deg,#ef4444,#dc2626); }
-.status-card.s-blue { background:linear-gradient(135deg,#3b82f6,#2563eb); }
-.status-card.s-yellow { background:linear-gradient(135deg,#f59e0b,#d97706); }
-.status-card.s-green { background:linear-gradient(135deg,#22c55e,#16a34a); }
-
-/* Split */
-.split { display:flex; gap:40px; height:calc(100% - 220px); }
-.split-left, .split-right { flex:1; }
-
-/* VS slide */
-.vs-container { display:flex; gap:40px; flex:1; }
-.vs-side {
-  flex:1; border-radius:24px; padding:50px;
-  display:flex; flex-direction:column; justify-content:center;
+.bubble-agent{
+  background:var(--glass);backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);color:var(--text);
+  border-bottom-left-radius:4px;
 }
-.vs-side.old { background:#f1f5f9; }
-.vs-side.new { background:linear-gradient(135deg,#667eea,#764ba2); color:white; }
-.vs-side h3 { font-size:40px; font-weight:900; margin-bottom:24px; }
-.vs-side p { font-size:26px; line-height:1.6; }
-.vs-side.old h3 { color:#94a3b8; }
-.vs-side.old p { color:#64748b; }
+.bubble-label{font-size:14px;font-weight:600;opacity:0.6;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
 
-/* Hub spoke */
-.hub-center {
-  width:160px; height:160px; border-radius:50%;
-  background:linear-gradient(135deg,#667eea,#764ba2);
-  color:white; display:flex; align-items:center; justify-content:center;
-  font-size:24px; font-weight:900; position:absolute;
-  top:50%; left:50%; transform:translate(-50%,-50%);
+/* Flow steps */
+.flow-step{
+  text-align:center;padding:28px 20px;min-width:190px;
+}
+.flow-step .step-icon{
+  width:64px;height:64px;border-radius:18px;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;font-weight:700;color:white;
+}
+.flow-step .step-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:4px}
+.flow-step .step-desc{font-size:16px;color:var(--text-dim)}
+.flow-arrow{font-size:28px;color:var(--text-dim);display:flex;align-items:center}
+
+/* Feature rows */
+.feature-row{display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.feature-row:last-child{border:none}
+.feature-dot{width:8px;height:8px;border-radius:50%;margin-top:8px;flex-shrink:0}
+
+/* Roadmap */
+.roadmap-item{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.roadmap-item:last-child{border:none}
+.roadmap-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+
+/* Glow pill */
+.glow-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:16px 36px;border-radius:60px;font-size:22px;font-weight:600;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;
   box-shadow:0 8px 32px rgba(102,126,234,0.4);
-  z-index:2;
 }
 
-/* Roadmap items */
-.roadmap-item {
-  display:flex; align-items:center; gap:16px;
-  padding:16px 0; border-bottom:1px solid #e5e7eb;
+/* Highlight box */
+.highlight{
+  padding:20px 28px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(102,126,234,0.12),rgba(118,75,162,0.08));
+  border:1px solid rgba(102,126,234,0.2);
 }
-.roadmap-item .dot {
-  width:12px; height:12px; border-radius:50%; background:#667eea; flex-shrink:0;
-}
-.roadmap-item span { font-size:24px; }
 
-@media print {
-  .slide { page-break-after:always; margin:0; }
-  body { background:white; }
-}
+@media print{.slide{page-break-after:always;margin:0}body{background:#0F172A}}
 </style>
 </head>
 <body>
 
-<!-- Slide 1: Title -->
-<div class="slide s1">
-  <div class="content" style="z-index:1;position:relative;">
-    <div class="date">2026 年 3 月</div>
-    <h1>部門 AI 推動藍圖</h1>
-    <div class="subtitle">讓 AI 成為每個人的超級助手</div>
+<!-- ==================== SLIDE 1: HERO ==================== -->
+<div class="slide bg-hero pad flex items-center justify-center text-center" style="flex-direction:column">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div>
+  <div style="position:relative;z-index:1">
+    <div class="badge" style="margin-bottom:32px">2026 年 3 月</div>
+    <h1 class="title" style="margin-bottom:24px">部門 AI 推動藍圖</h1>
+    <p style="font-size:32px;color:var(--text-muted);font-weight:300">讓 AI 成為每個人的超級助手</p>
   </div>
 </div>
 
-<!-- Slide 2: Keywords -->
-<div class="slide light">
-  <h2>先搞懂關鍵詞</h2>
-  <div class="sub">理解 AI Agent 的三個核心概念</div>
-  <div class="cards">
-    <div class="card blue">
-      <div class="icon">A</div>
-      <h3>Agent（代理人）</h3>
-      <p>你的專屬 AI 助理<br><br>你給目標，它自己拆解步驟、選擇工具、完成任務。不只是聊天，而是<strong>主動執行</strong>。</p>
-    </div>
-    <div class="card orange">
-      <div class="icon">M</div>
-      <h3>MCP（萬能插頭）</h3>
-      <p>Model Context Protocol<br><br>讓 Agent 可以<strong>安全連接</strong>各種資料庫和工具。像 USB-C 一樣，一個插頭搞定所有裝置。</p>
-    </div>
-    <div class="card green">
-      <div class="icon">S</div>
-      <h3>Skill（技能）</h3>
-      <p>Agent 學會的招式<br><br>每個 Skill 解決一個特定問題。像手機 App，<strong>查營收</strong>是一個 Skill，<strong>生成圖表</strong>是另一個。</p>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 3: Traditional vs Agent -->
-<div class="slide light">
-  <h2>傳統工具 vs AI Agent</h2>
-  <div class="sub">從被動回答到主動執行</div>
-  <div class="vs-container">
-    <div class="vs-side old">
-      <h3>傳統 AI 工具</h3>
-      <p>你問一個問題<br>→ AI 回答一段文字<br>→ 結束<br><br>像 Google 搜尋：<br>你查、你讀、你整理</p>
-    </div>
-    <div class="vs-side new">
-      <h3>AI Agent</h3>
-      <p>你說出目標<br>→ Agent 自己查資料<br>→ 連資料庫<br>→ 產圖表<br>→ 寫報告<br><br>像真人助理：交代任務，全部搞定</p>
+<!-- ==================== SLIDE 2: KEYWORDS ==================== -->
+<div class="slide bg-1 pad" style="position:relative">
+  <div class="orb orb-1" style="opacity:0.15;top:-300px;right:-200px"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">先搞懂三個關鍵詞</h2>
+    <p class="subtitle">理解 AI Agent 的核心概念</p>
+    <div class="grid-3">
+      <div class="glass" style="padding:44px 36px">
+        <div class="icon-circle ic-blue" style="margin-bottom:24px">A</div>
+        <h3 class="h3" style="color:#93C5FD">Agent（代理人）</h3>
+        <p class="body">你的專屬 AI 助理。你給目標，它自己拆解步驟、選擇工具、完成任務。</p>
+        <div style="margin-top:20px;padding:14px 20px;border-radius:12px;background:rgba(59,130,246,0.1)">
+          <p class="small" style="color:#93C5FD">不只是聊天，而是<strong>主動執行</strong></p>
+        </div>
+      </div>
+      <div class="glass" style="padding:44px 36px">
+        <div class="icon-circle ic-orange" style="margin-bottom:24px">M</div>
+        <h3 class="h3" style="color:#FCD34D">MCP（萬能插頭）</h3>
+        <p class="body">Model Context Protocol — 讓 Agent 安全連接各種資料庫和工具。</p>
+        <div style="margin-top:20px;padding:14px 20px;border-radius:12px;background:rgba(245,158,11,0.1)">
+          <p class="small" style="color:#FCD34D">像 USB-C，一個協議搞定所有連接</p>
+        </div>
+      </div>
+      <div class="glass" style="padding:44px 36px">
+        <div class="icon-circle ic-green" style="margin-bottom:24px">S</div>
+        <h3 class="h3" style="color:#86EFAC">Skill（技能）</h3>
+        <p class="body">Agent 學會的招式。每個 Skill 解決一個特定問題，像手機 App。</p>
+        <div style="margin-top:20px;padding:14px 20px;border-radius:12px;background:rgba(34,197,94,0.1)">
+          <p class="small" style="color:#86EFAC">查營收、生成圖表、日報排程...</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 4: How Agent works -->
-<div class="slide light">
-  <h2>Agent 怎麼運作？</h2>
-  <div class="sub">「幫我查上週業績做成圖表」— 五個步驟自動完成</div>
-  <div class="flow">
-    <div class="flow-step" style="border-left:4px solid #4a9eed;">
-      <div style="font-size:48px;">&#128100;</div>
-      <div class="label">你（使用者）</div>
-      <div class="desc">下達指令</div>
+<!-- ==================== SLIDE 3: VS ==================== -->
+<div class="slide bg-2 pad" style="position:relative">
+  <div class="orb orb-3"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">傳統工具 vs AI Agent</h2>
+    <p class="subtitle">從被動回答到主動執行</p>
+    <div class="flex gap-30" style="height:calc(100% - 200px)">
+      <div class="glass flex-1" style="padding:60px;display:flex;flex-direction:column;justify-content:center;opacity:0.6">
+        <h3 style="font-size:36px;font-weight:700;color:var(--text-dim);margin-bottom:24px">傳統 AI 工具</h3>
+        <div class="body" style="font-size:26px;line-height:2">
+          <p>你問一個問題</p>
+          <p style="color:var(--text-dim)">→ AI 回答一段文字</p>
+          <p style="color:var(--text-dim)">→ 結束</p>
+        </div>
+        <div style="margin-top:32px;padding:20px;border-radius:12px;background:rgba(255,255,255,0.03)">
+          <p style="font-size:20px;color:var(--text-dim)">像 Google 搜尋：你查、你讀、你整理</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:48px;color:var(--accent)">→</div>
+      <div class="flex-1" style="padding:60px;display:flex;flex-direction:column;justify-content:center;border-radius:var(--radius);background:linear-gradient(135deg,rgba(102,126,234,0.15),rgba(118,75,162,0.15));border:1px solid rgba(102,126,234,0.3)">
+        <h3 style="font-size:36px;font-weight:700;color:#A5B4FC;margin-bottom:24px">AI Agent</h3>
+        <div class="body" style="font-size:26px;line-height:2;color:var(--text)">
+          <p>你說出目標</p>
+          <p>→ Agent 自己查資料、連資料庫</p>
+          <p>→ 產圖表、寫報告</p>
+          <p style="color:var(--green);font-weight:600">→ 完整結果交給你</p>
+        </div>
+        <div style="margin-top:32px;padding:20px;border-radius:12px;background:rgba(102,126,234,0.1)">
+          <p style="font-size:20px;color:#A5B4FC">像真人助理：交代任務，全部搞定</p>
+        </div>
+      </div>
     </div>
-    <div class="flow-arrow">&#10132;</div>
-    <div class="flow-step" style="border-left:4px solid #8b5cf6;">
-      <div style="font-size:48px;">&#129302;</div>
-      <div class="label">AI Agent</div>
-      <div class="desc">理解 + 規劃</div>
-    </div>
-    <div class="flow-arrow">&#10132;</div>
-    <div class="flow-step" style="border-left:4px solid #f59e0b;">
-      <div style="font-size:48px;">&#128268;</div>
-      <div class="label">MCP 連接</div>
-      <div class="desc">安全橋接</div>
-    </div>
-    <div class="flow-arrow">&#10132;</div>
-    <div class="flow-step" style="border-left:4px solid #22c55e;">
-      <div style="font-size:48px;">&#128451;</div>
-      <div class="label">工具 & 資料</div>
-      <div class="desc">BigQuery / MSSQL</div>
-    </div>
-    <div class="flow-arrow">&#10132;</div>
-    <div class="flow-step" style="border-left:4px solid #ef4444;">
-      <div style="font-size:48px;">&#128200;</div>
-      <div class="label">產出結果</div>
-      <div class="desc">圖表 / 報告</div>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:40px;padding:30px;background:white;border-radius:20px;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
-    <p style="font-size:26px;color:#555;">就像你跟助理說<span style="color:#667eea;font-weight:700;">「幫我查上週業績做成圖表」</span>，助理會自己開電腦、查系統、做圖表、交給你</p>
   </div>
 </div>
 
-<!-- Slide 4.5: OpenClaw Framework -->
-<div class="slide light">
-  <h2>OpenClaw 框架</h2>
-  <div class="sub">我們用來打造和管理所有 Agent 的基礎架構</div>
-  <div class="split">
-    <div class="split-left">
-      <div class="card blue" style="height:100%;padding:50px;">
-        <h3 style="font-size:28px;margin-bottom:30px;">什麼是 OpenClaw？</h3>
-        <div style="font-size:22px;color:#555;line-height:2;">
-          <p>OpenClaw 是我們自建的 <strong>Agent 管理框架</strong>，提供統一的方式來：</p>
-          <div style="margin-top:16px;">
-            <div>&#x1F916; <strong>定義 Agent</strong> — 透過 AGENTS.md 設定每個 Agent 的任務和工具</div>
-            <div>&#x1F50C; <strong>串接 MCP</strong> — 統一管理資料庫和工具連接</div>
-            <div>&#x23F0; <strong>Cron 排程</strong> — 設定 Agent 定時自動執行任務</div>
-            <div>&#x1F9E0; <strong>記憶系統</strong> — LanceDB 語義記憶，Agent 能記住上下文</div>
-            <div>&#x1F310; <strong>Browser 自動化</strong> — ocb 指令操控瀏覽器</div>
-            <div>&#x1F4E8; <strong>Telegram 整合</strong> — 透過 Cloudflare Workers Proxy 推送訊息</div>
+<!-- ==================== SLIDE 4: HOW AGENT WORKS ==================== -->
+<div class="slide bg-1 pad" style="position:relative">
+  <div class="orb orb-2" style="opacity:0.12;bottom:-300px;left:30%"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">Agent 怎麼運作？</h2>
+    <p class="subtitle">「幫我查上週業績做成圖表」— 五步自動完成</p>
+    <div class="flex items-center justify-center gap-20" style="margin:40px 0">
+      <div class="flow-step glass" style="padding:32px 28px;">
+        <div class="step-icon ic-blue">1</div>
+        <div class="step-title">你（使用者）</div>
+        <div class="step-desc">下達指令</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step glass" style="padding:32px 28px;">
+        <div class="step-icon ic-purple">2</div>
+        <div class="step-title">AI Agent</div>
+        <div class="step-desc">理解 + 規劃</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step glass" style="padding:32px 28px;">
+        <div class="step-icon ic-orange">3</div>
+        <div class="step-title">MCP 連接</div>
+        <div class="step-desc">安全橋接工具</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step glass" style="padding:32px 28px;">
+        <div class="step-icon ic-green">4</div>
+        <div class="step-title">工具 & 資料</div>
+        <div class="step-desc">BigQuery / MSSQL</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step glass" style="padding:32px 28px;">
+        <div class="step-icon ic-red">5</div>
+        <div class="step-title">產出結果</div>
+        <div class="step-desc">圖表 / 報告</div>
+      </div>
+    </div>
+    <div class="highlight text-center" style="max-width:1200px;margin:0 auto;padding:28px">
+      <p style="font-size:24px;color:var(--text-muted)">就像你跟助理說 <span style="color:#A5B4FC;font-weight:600">「幫我查上週業績做成圖表」</span>，助理會自己開電腦、查系統、做圖表、交給你</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 5: OPENCLAW FRAMEWORK ==================== -->
+<div class="slide bg-3 pad" style="position:relative">
+  <div class="orb orb-1" style="opacity:0.12;top:20%;left:-200px"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">OpenClaw 框架</h2>
+    <p class="subtitle">打造和管理所有 Agent 的基礎架構</p>
+    <div class="flex gap-30">
+      <div class="glass flex-1" style="padding:40px">
+        <h3 class="h3" style="color:#A5B4FC">核心功能</h3>
+        <div class="feature-row"><div class="feature-dot" style="background:#667EEA"></div><div><p style="font-size:21px"><strong style="color:var(--text)">AGENTS.md 設定</strong></p><p class="small">定義每個 Agent 的任務、工具、邊界</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#F59E0B"></div><div><p style="font-size:21px"><strong style="color:var(--text)">MCP 串接</strong></p><p class="small">統一管理所有資料庫和工具連接</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#8B5CF6"></div><div><p style="font-size:21px"><strong style="color:var(--text)">LanceDB 語義記憶</strong></p><p class="small">Agent 能記住 Schema、歷史分析結果</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#22C55E"></div><div><p style="font-size:21px"><strong style="color:var(--text)">Browser 自動化 (ocb)</strong></p><p class="small">操控瀏覽器：截圖、登入、填表</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#06B6D4"></div><div><p style="font-size:21px"><strong style="color:var(--text)">Telegram 整合</strong></p><p class="small">透過 Cloudflare Workers Proxy 推送</p></div></div>
+      </div>
+      <div class="flex-1" style="display:flex;flex-direction:column;gap:24px">
+        <div style="padding:40px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(239,68,68,0.08));border:1px solid rgba(245,158,11,0.2);flex:1">
+          <h3 class="h3" style="color:#FCD34D">Cron 排程功能</h3>
+          <p class="body" style="margin-bottom:20px">Agent 不只能對話，還能<strong style="color:var(--text)">定時自動執行</strong>：</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="glass" style="padding:14px 20px;border-radius:12px"><p style="font-size:19px">數據 Agent — 每天早上自動產出<strong style="color:#FCD34D">數據日報</strong></p></div>
+            <div class="glass" style="padding:14px 20px;border-radius:12px"><p style="font-size:19px">pm-tracker — 每天掃描產出<strong style="color:#FCD34D">健康報表</strong></p></div>
+            <div class="glass" style="padding:14px 20px;border-radius:12px"><p style="font-size:19px">自動推送 Telegram，<strong style="color:#FCD34D">不需人工觸發</strong></p></div>
+          </div>
+        </div>
+        <div class="glass" style="padding:28px;text-align:center">
+          <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+            <span class="tag tag-purple">AGENTS.md</span>
+            <span style="color:var(--text-dim)">+</span>
+            <span class="tag tag-blue">MCP</span>
+            <span style="color:var(--text-dim)">+</span>
+            <span class="tag tag-orange">Cron</span>
+            <span style="color:var(--text-dim)">+</span>
+            <span class="tag tag-green">記憶</span>
+            <span style="color:var(--text-dim);font-size:24px">→</span>
+            <span class="glow-pill" style="padding:10px 24px;font-size:18px">OpenClaw Session</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="split-right">
-      <div class="card orange" style="height:50%;padding:40px;margin-bottom:20px;">
-        <h3 style="font-size:28px;margin-bottom:20px;">&#x23F0; Cron 排程功能</h3>
-        <div style="font-size:22px;color:#555;line-height:1.8;">
-          <p>Agent 不只能對話互動，還能<strong>定時自動執行</strong>：</p>
-          <div style="margin-top:12px;">
-            <div style="padding:8px 16px;background:#fff7ed;border-radius:8px;margin-bottom:8px;">
-              &#x1F4CA; 數據 Agent — 每天早上自動產出<strong>數據日報</strong>
-            </div>
-            <div style="padding:8px 16px;background:#fff7ed;border-radius:8px;margin-bottom:8px;">
-              &#x1F4CB; pm-tracker — 每天自動掃描專案狀態產出<strong>健康報表</strong>
-            </div>
-            <div style="padding:8px 16px;background:#fff7ed;border-radius:8px;">
-              &#x1F4E8; 自動推送到 Telegram，不需人工觸發
-            </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 6: FOUR PILLARS ==================== -->
+<div class="slide bg-2 pad" style="position:relative">
+  <div class="orb orb-4"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">四大推動方向</h2>
+    <p class="subtitle">部門 AI 的全面佈局</p>
+    <div class="grid-2" style="gap:24px">
+      <div class="glass" style="padding:44px;border-left:4px solid #3B82F6">
+        <div class="icon-circle ic-blue" style="margin-bottom:20px">1</div>
+        <h3 class="h3" style="color:#93C5FD">數據 Agent</h3>
+        <p class="body">用說的就能查數據，自動產圖表和日報。連接 BigQuery、MSSQL 等資料庫。</p>
+      </div>
+      <div class="glass" style="padding:44px;border-left:4px solid #EF4444">
+        <div class="icon-circle ic-red" style="margin-bottom:20px">2</div>
+        <h3 class="h3" style="color:#FCA5A5">特殊 Agent</h3>
+        <p class="body">競品影片分析等耗時任務自動化。丟影片進去，直接產出編導需要的規格文件。</p>
+      </div>
+      <div class="glass" style="padding:44px;border-left:4px solid #22C55E">
+        <div class="icon-circle ic-green" style="margin-bottom:20px">3</div>
+        <h3 class="h3" style="color:#86EFAC">AI 工具推動</h3>
+        <p class="body">導入 AI 工具到日常工作，提升全員效率，降低重複性工作負擔。</p>
+      </div>
+      <div class="glass" style="padding:44px;border-left:4px solid #8B5CF6">
+        <div class="icon-circle ic-purple" style="margin-bottom:20px">4</div>
+        <h3 class="h3" style="color:#C4B5FD">AM Agent (Claude Cowork)</h3>
+        <p class="body">推動非軟體人員應用 AI。建立個人化 Skill，每個人都有自己的 AI 工具箱。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 7: DATA AGENT ==================== -->
+<div class="slide bg-1 pad" style="position:relative">
+  <div class="orb orb-1" style="opacity:0.1;top:-200px;right:0"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">數據 Agent</h2>
+    <p class="subtitle">用說的就能查數據 — bq-research</p>
+    <div class="flex gap-30">
+      <div class="glass flex-1" style="padding:36px">
+        <h3 class="h3" style="color:#93C5FD">功能</h3>
+        <div class="feature-row"><div class="feature-dot" style="background:#3B82F6"></div><div><p style="font-size:20px"><strong style="color:var(--text)">自然語言查詢</strong> → 自動轉 SQL</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#22C55E"></div><div><p style="font-size:20px"><strong style="color:var(--text)">自動生成圖表</strong>（折線/柱狀/圓餅）</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#F59E0B"></div><div><p style="font-size:20px"><strong style="color:var(--text)">Cron 日報排程</strong>，每天定時推送 Telegram</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#EF4444"></div><div><p style="font-size:20px"><strong style="color:var(--text)">成本控管</strong>：每次查詢上限 NT$60</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#8B5CF6"></div><div><p style="font-size:20px"><strong style="color:var(--text)">LanceDB 記憶</strong>，記住 Schema 知識</p></div></div>
+        <div class="highlight" style="margin-top:16px"><p style="font-size:18px;color:#93C5FD"><strong>進度：</strong>SS 專案已在進行，需各專案資料工程師完成 Schema 教育</p></div>
+      </div>
+      <div class="flex-1" style="display:flex;flex-direction:column;gap:20px">
+        <div class="glass" style="padding:36px;flex:1">
+          <h3 class="h3" style="color:#FCD34D">連接的 MCP & API</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+            <span class="tag tag-blue">BigQuery API (107+ tables)</span>
+            <span class="tag tag-red">MSSQL MCP Server</span>
+            <span class="tag tag-purple">LanceDB 記憶系統</span>
+            <span class="tag tag-orange">QuickChart API</span>
+            <span class="tag tag-cyan">Telegram 推送</span>
           </div>
         </div>
+        <div class="glass" style="padding:36px;flex:1">
+          <h3 class="h3" style="color:var(--text-muted)">Before → After</h3>
+          <p style="font-size:20px;color:var(--text-dim);text-decoration:line-through;margin-bottom:8px">想看數據 → 找工程師 → 等排程 → 拿報表</p>
+          <p style="font-size:22px;color:var(--green);font-weight:600">直接說「給我上週營收」→ 秒出結果</p>
+        </div>
       </div>
-      <div class="card green" style="height:calc(50% - 20px);padding:40px;">
-        <h3 style="font-size:28px;margin-bottom:20px;">架構一覽</h3>
-        <div style="font-size:20px;color:#555;text-align:center;">
-          <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
-            <div class="tag purple">AGENTS.md</div>
-            <span style="font-size:24px;">+</span>
-            <div class="tag blue">MCP Servers</div>
-            <span style="font-size:24px;">+</span>
-            <div class="tag orange">Cron 排程</div>
-            <span style="font-size:24px;">+</span>
-            <div class="tag green">記憶系統</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 8: DATA AGENT CHAT ==================== -->
+<div class="slide bg-3 pad" style="position:relative">
+  <div class="orb orb-2" style="opacity:0.1"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">數據 Agent 對話範例</h2>
+    <p class="subtitle">實際操作示範</p>
+    <div class="flex gap-40">
+      <div style="flex:1.2">
+        <div class="bubble bubble-user">
+          <div class="bubble-label">使用者</div>
+          給我上週 GD 專案的每日營收趨勢圖
+        </div>
+        <div class="bubble bubble-agent">
+          <div class="bubble-label">Agent</div>
+          好的，查詢 BigQuery...<br>篩選：LogoType=1, Level1='GD', 日期=上週
+        </div>
+        <div class="bubble bubble-agent">
+          <div class="bubble-label">Agent</div>
+          <div style="background:rgba(59,130,246,0.1);padding:16px;border-radius:12px;margin:8px 0">
+            <p class="small" style="color:#93C5FD">每日營收趨勢圖</p>
+            <div style="height:60px;background:linear-gradient(90deg,rgba(59,130,246,0.2),rgba(59,130,246,0.5),rgba(59,130,246,0.3));border-radius:8px;margin-top:8px"></div>
           </div>
-          <div style="margin-top:16px;font-size:28px;color:#667eea;">&#x2193;</div>
-          <div style="display:inline-block;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:14px 32px;border-radius:40px;font-size:22px;font-weight:700;margin-top:8px;">
-            OpenClaw Agent Session
+          上週總營收 $2,450,000，較前週<strong style="color:#86EFAC">成長 12%</strong>，週三為高峰
+        </div>
+        <div class="bubble bubble-agent" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2)">
+          <div class="bubble-label" style="color:#86EFAC">自動推送</div>
+          已將圖表推送到 Telegram 群組 ✓
+        </div>
+      </div>
+      <div style="flex:0.6">
+        <div class="glass" style="padding:32px">
+          <h3 class="h3" style="color:#86EFAC">亮點</h3>
+          <div style="font-size:20px;line-height:2.2;color:var(--text-muted)">
+            <p>✓ 用自然語言，不需寫 SQL</p>
+            <p>✓ 自動篩選正確資料表</p>
+            <p>✓ 自動生成視覺化圖表</p>
+            <p>✓ 主動推送到 Telegram</p>
           </div>
         </div>
       </div>
@@ -327,399 +442,228 @@ body { font-family:'Noto Sans TC',sans-serif; background:#0f0f1a; color:#1a1a2e;
   </div>
 </div>
 
-<!-- Slide 5: Four Pillars -->
-<div class="slide light">
-  <h2>四大推動方向</h2>
-  <div class="sub">部門 AI 的全面佈局</div>
-  <div class="grid2x2">
-    <div class="card blue" style="padding:50px;">
-      <div class="icon">1</div>
-      <h3>數據 Agent</h3>
-      <p>用說的就能查數據，自動產圖表和日報。連接 BigQuery、MSSQL 等資料庫。</p>
+<!-- ==================== SLIDE 9: PM TRACKER ==================== -->
+<div class="slide bg-2 pad" style="position:relative">
+  <div class="orb orb-3" style="opacity:0.1"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">專案追蹤 Agent</h2>
+    <p class="subtitle">每日自動體檢 — pm-tracker</p>
+    <div class="grid-4" style="margin-bottom:28px">
+      <div class="status status-red"><h4 style="font-size:22px;font-weight:700;margin-bottom:6px">逾期項目</h4><p class="small" style="color:rgba(255,255,255,0.7)">自動標記超過截止日的任務</p></div>
+      <div class="status status-blue"><h4 style="font-size:22px;font-weight:700;margin-bottom:6px">上線後測試</h4><p class="small" style="color:rgba(255,255,255,0.7)">追蹤未完成測試的項目</p></div>
+      <div class="status status-yellow"><h4 style="font-size:22px;font-weight:700;margin-bottom:6px">文件缺口</h4><p class="small" style="color:rgba(255,255,255,0.7)">檢查規格書和測試報告</p></div>
+      <div class="status status-green"><h4 style="font-size:22px;font-weight:700;margin-bottom:6px">品質審查</h4><p class="small" style="color:rgba(255,255,255,0.7)">自動審查文件品質</p></div>
     </div>
-    <div class="card red" style="padding:50px;">
-      <div class="icon">2</div>
-      <h3>特殊 Agent</h3>
-      <p>競品影片分析等耗時任務自動化。丟影片進去，直接產出編導需要的規格文件。</p>
-    </div>
-    <div class="card green" style="padding:50px;">
-      <div class="icon">3</div>
-      <h3>AI 工具推動</h3>
-      <p>導入 AI 工具到日常工作，提升全員效率，降低重複性工作負擔。</p>
-    </div>
-    <div class="card purple" style="padding:50px;">
-      <div class="icon">4</div>
-      <h3>AM Agent (Claude Cowork)</h3>
-      <p>推動非軟體人員應用 AI。建立個人化 Skill，每個人都有自己的 AI 工具箱。</p>
+    <div class="flex gap-30">
+      <div class="glass flex-1" style="padding:32px">
+        <h3 class="h3" style="color:#FCD34D">連接的系統</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span class="tag tag-blue">PM Tracker REST API</span>
+          <span class="tag tag-red">Redmine API</span>
+          <span class="tag tag-orange">Mantis API</span>
+          <span class="tag tag-purple">SharePoint (Browser)</span>
+          <span class="tag tag-cyan">Telegram 推送</span>
+        </div>
+      </div>
+      <div class="glass flex-1" style="padding:32px">
+        <h3 class="h3" style="color:#C4B5FD">Cron 排程</h3>
+        <p class="body">每天定時自動執行完整的品質審查流程：掃描 → 審查 → 產報表 → 推送 Telegram，全程無需人工介入。</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 6: Data Agent -->
-<div class="slide light">
-  <h2>數據 Agent</h2>
-  <div class="sub">用說的就能查數據 — bq-research</div>
-  <div class="split">
-    <div class="split-left">
-      <div class="card blue" style="height:100%;">
-        <h3 style="margin-bottom:24px;">功能</h3>
-        <div style="font-size:22px;color:#555;line-height:2;">
-          <div>&#x1F50D; 自然語言查詢 → 自動轉 SQL</div>
-          <div>&#x1F4CA; 自動生成折線圖 / 柱狀圖 / 圓餅圖</div>
-          <div>&#x1F4C5; <strong>Cron 日報排程</strong>，每天定時自動推送到 Telegram</div>
-          <div>&#x1F4B0; 成本控管：每次查詢上限 NT$60</div>
-          <div>&#x1F9E0; LanceDB 語義記憶，記住 Schema</div>
+<!-- ==================== SLIDE 10: PM TRACKER REPORT ==================== -->
+<div class="slide bg-1 pad" style="position:relative">
+  <div class="orb orb-4" style="opacity:0.1"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">每日報表範例</h2>
+    <p class="subtitle">Cron 每日自動產出，推送到 Telegram</p>
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="glass" style="padding:48px;border-left:4px solid var(--accent)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px">
+          <p style="font-size:22px;color:var(--text-dim)">2026-03-22 專案健康 Dashboard</p>
+          <span class="badge" style="background:rgba(245,158,11,0.15);color:#FCD34D;border-color:rgba(245,158,11,0.2)">Cron 自動產出</span>
         </div>
-        <div style="margin-top:24px;padding:16px;background:#eff6ff;border-radius:12px;">
-          <strong style="color:#4a9eed;">進度：</strong><span style="color:#555;">SS 專案已在進行，需各專案資料工程師完成 Schema 教育</span>
+        <div style="display:flex;flex-direction:column;gap:16px;font-size:22px">
+          <div class="status status-red" style="padding:18px 24px"><strong>逾期：</strong>P-042 SS老虎機 測試階段逾期 3 天</div>
+          <div class="status status-blue" style="padding:18px 24px"><strong>測試：</strong>P-038 已上線，待完成回歸測試</div>
+          <div class="status status-yellow" style="padding:18px 24px"><strong>文件：</strong>P-045 缺少測試報告</div>
+          <div class="status status-green" style="padding:18px 24px"><strong>品質：</strong>P-042 規格書內容過於簡略，建議補充細節</div>
         </div>
-      </div>
-    </div>
-    <div class="split-right">
-      <div class="card orange" style="height:100%;">
-        <h3 style="margin-bottom:24px;">連接的 MCP & API</h3>
-        <div class="tags" style="gap:16px;">
-          <div class="tag blue" style="font-size:20px;padding:14px 24px;">BigQuery API (107+ tables)</div>
-          <div class="tag red" style="font-size:20px;padding:14px 24px;">MSSQL MCP Server</div>
-          <div class="tag purple" style="font-size:20px;padding:14px 24px;">LanceDB 記憶系統</div>
-          <div class="tag orange" style="font-size:20px;padding:14px 24px;">QuickChart API</div>
-          <div class="tag cyan" style="font-size:20px;padding:14px 24px;">Telegram 推送</div>
-        </div>
-        <div style="margin-top:40px;font-size:20px;color:#555;line-height:1.8;">
-          <strong>Before:</strong> 想看數據 → 找工程師 → 等排程 → 拿報表<br>
-          <strong style="color:#f59e0b;">After:</strong> 直接說「給我上週營收趨勢圖」→ 秒出結果
+        <div style="text-align:right;margin-top:24px">
+          <span style="font-size:18px;color:#86EFAC">✓ 已自動推送至 Telegram 群組</span>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 7: Data Agent Chat -->
-<div class="slide light">
-  <h2>數據 Agent 對話範例</h2>
-  <div class="sub">實際操作示範</div>
-  <div style="display:flex;gap:60px;align-items:flex-start;">
-    <div class="chat" style="flex:1;">
-      <div class="bubble user">
-        <div class="role">使用者</div>
-        給我上週 GD 專案的每日營收趨勢圖
-      </div>
-      <div class="bubble agent">
-        <div class="role">Agent</div>
-        好的，讓我查詢 BigQuery...<br>
-        篩選條件：LogoType=1, Level1='GD', 日期=上週
-      </div>
-      <div class="bubble agent">
-        <div class="role">Agent</div>
-        <div style="background:#f0f9ff;padding:20px;border-radius:12px;margin:8px 0;">
-          <div style="font-size:18px;color:#888;">&#x1F4C8; 每日營收趨勢圖</div>
-          <div style="height:80px;background:linear-gradient(90deg,#e0f2fe,#bae6fd,#7dd3fc,#38bdf8,#0ea5e9,#0284c7,#0369a1);border-radius:8px;margin-top:8px;"></div>
-        </div>
-        上週總營收 $2,450,000<br>
-        較前週<strong style="color:#22c55e;">成長 12%</strong>，週三為高峰
-      </div>
-      <div class="bubble agent" style="background:#f0fdf4;border:1px solid #bbf7d0;">
-        <div class="role" style="color:#22c55e;">自動推送</div>
-        已將圖表推送到 Telegram 群組 &#x2705;
-      </div>
+<!-- ==================== SLIDE 11: VIDEO SPEC ==================== -->
+<div class="slide bg-3 pad" style="position:relative">
+  <div class="orb orb-1" style="opacity:0.1;top:50%;left:-200px"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">競品影片分析 Agent</h2>
+    <p class="subtitle">丟影片就出規格 — video-spec</p>
+    <div class="flex items-center justify-center gap-20" style="margin-bottom:36px">
+      <div class="flow-step glass"><div class="step-icon ic-red">1</div><div class="step-title">YouTube 影片</div><div class="step-desc">輸入連結</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step glass"><div class="step-icon ic-orange">2</div><div class="step-title">自動截圖</div><div class="step-desc">20-30 張關鍵畫面</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step glass"><div class="step-icon ic-purple">3</div><div class="step-title">分析規格</div><div class="step-desc">12 步驟 SOP</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step glass"><div class="step-icon ic-green">4</div><div class="step-title">產出 PDF</div><div class="step-desc">完整規格文件</div></div>
     </div>
-    <div style="flex:0.6;">
-      <div class="card green" style="padding:30px;">
-        <h3 style="font-size:24px;margin-bottom:16px;">重點</h3>
-        <p style="font-size:20px;">
-          &#x2705; 用自然語言，不需要寫 SQL<br><br>
-          &#x2705; 自動篩選正確的資料表<br><br>
-          &#x2705; 自動生成視覺化圖表<br><br>
-          &#x2705; 主動推送到 Telegram
-        </p>
+    <div class="flex gap-24">
+      <div class="glass flex-1" style="padding:32px">
+        <h3 class="h3" style="color:#FCA5A5">產出內容</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span class="tag tag-red">板面配置 (Reels x Rows)</span>
+          <span class="tag tag-orange">符號表</span>
+          <span class="tag tag-purple">賠付表</span>
+          <span class="tag tag-blue">特殊功能 (Free Game / Bonus)</span>
+          <span class="tag tag-green">遊戲流程圖</span>
+          <span class="tag tag-cyan">RTP / Volatility</span>
+        </div>
+      </div>
+      <div style="padding:32px;border-radius:var(--radius);background:linear-gradient(135deg,rgba(34,197,94,0.12),rgba(6,182,212,0.08));border:1px solid rgba(34,197,94,0.2);width:320px;display:flex;flex-direction:column;justify-content:center;text-align:center">
+        <p style="font-size:20px;color:var(--text-dim);text-decoration:line-through">數小時人工作業</p>
+        <p style="font-size:32px;color:#86EFAC;font-weight:700;margin-top:8px">→ 自動完成</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 8: PM Tracker Agent -->
-<div class="slide light">
-  <h2>專案追蹤 Agent</h2>
-  <div class="sub">每日自動體檢 — pm-tracker</div>
-  <div style="margin-bottom:30px;">
-    <div class="grid2x2" style="gap:20px;">
-      <div class="status-card s-red">
-        <h4>&#x1F534; 逾期項目</h4>
-        <p>自動標記超過截止日的任務</p>
-      </div>
-      <div class="status-card s-blue">
-        <h4>&#x1F9EA; 上線後測試</h4>
-        <p>追蹤已上線但未完成測試的項目</p>
-      </div>
-      <div class="status-card s-yellow">
-        <h4>&#x1F4CE; 文件缺口</h4>
-        <p>檢查規格書、測試報告完整度</p>
-      </div>
-      <div class="status-card s-green">
-        <h4>&#x1F50D; 品質審查</h4>
-        <p>自動審查文件品質並提出建議</p>
-      </div>
-    </div>
-  </div>
-  <div class="card" style="padding:30px;">
-    <h3 style="font-size:24px;margin-bottom:16px;">連接的系統</h3>
-    <div class="tags">
-      <div class="tag blue" style="font-size:20px;padding:12px 20px;">PM Tracker REST API</div>
-      <div class="tag red" style="font-size:20px;padding:12px 20px;">Redmine API</div>
-      <div class="tag orange" style="font-size:20px;padding:12px 20px;">Mantis API</div>
-      <div class="tag purple" style="font-size:20px;padding:12px 20px;">SharePoint (Browser)</div>
-      <div class="tag cyan" style="font-size:20px;padding:12px 20px;">Telegram 推送</div>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 9: PM Tracker Report -->
-<div class="slide light">
-  <h2>每日報表範例</h2>
-  <div class="sub">Agent 每天自動產出，推送到 Telegram</div>
-  <div style="max-width:1000px;margin:0 auto;">
-    <div class="card" style="padding:50px;border-left:6px solid #667eea;">
-      <div style="font-size:20px;color:#888;margin-bottom:24px;">&#x1F4CB; 2026-03-22 專案健康 Dashboard <span style="background:#ede9fe;color:#8b5cf6;padding:4px 12px;border-radius:8px;font-size:16px;margin-left:8px;">&#x23F0; Cron 每日自動產出</span></div>
-      <div style="font-size:24px;line-height:2.2;">
-        <div style="padding:12px 20px;background:#fee2e2;border-radius:12px;margin-bottom:12px;">
-          &#x1F534; <strong>逾期：</strong>P-042 SS老虎機 測試階段逾期 3 天
-        </div>
-        <div style="padding:12px 20px;background:#dbeafe;border-radius:12px;margin-bottom:12px;">
-          &#x1F9EA; <strong>測試：</strong>P-038 已上線，待完成回歸測試
-        </div>
-        <div style="padding:12px 20px;background:#fef3c7;border-radius:12px;margin-bottom:12px;">
-          &#x1F4CE; <strong>文件：</strong>P-045 缺少測試報告
-        </div>
-        <div style="padding:12px 20px;background:#d1fae5;border-radius:12px;margin-bottom:12px;">
-          &#x1F50D; <strong>品質：</strong>P-042 規格書內容過於簡略，建議補充細節
-        </div>
-      </div>
-      <div style="text-align:right;margin-top:20px;font-size:20px;color:#667eea;">
-        &#x2705; 已自動推送至 Telegram 群組
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 10: Video Spec Agent -->
-<div class="slide light">
-  <h2>競品影片分析 Agent</h2>
-  <div class="sub">丟影片就出規格 — video-spec</div>
-  <div class="flow" style="margin-bottom:40px;">
-    <div class="flow-step" style="border-left:4px solid #ef4444;min-width:240px;">
-      <div style="font-size:42px;">&#x1F3AC;</div>
-      <div class="label">YouTube 影片</div>
-      <div class="desc">輸入影片連結</div>
-    </div>
-    <div class="flow-arrow">&#10132;</div>
-    <div class="flow-step" style="border-left:4px solid #f59e0b;min-width:240px;">
-      <div style="font-size:42px;">&#x1F4F8;</div>
-      <div class="label">自動截圖</div>
-      <div class="desc">20-30 張關鍵畫面</div>
-    </div>
-    <div class="flow-arrow">&#10132;</div>
-    <div class="flow-step" style="border-left:4px solid #8b5cf6;min-width:240px;">
-      <div style="font-size:42px;">&#x1F9E0;</div>
-      <div class="label">分析規格</div>
-      <div class="desc">12 步驟 SOP</div>
-    </div>
-    <div class="flow-arrow">&#10132;</div>
-    <div class="flow-step" style="border-left:4px solid #22c55e;min-width:240px;">
-      <div style="font-size:42px;">&#x1F4C4;</div>
-      <div class="label">產出 PDF</div>
-      <div class="desc">完整規格文件</div>
-    </div>
-  </div>
-  <div class="cards">
-    <div class="card red" style="flex:2;">
-      <h3>產出內容</h3>
-      <div class="tags" style="margin-top:16px;">
-        <div class="tag red" style="font-size:20px;padding:14px 20px;">板面配置 (Reels x Rows)</div>
-        <div class="tag orange" style="font-size:20px;padding:14px 20px;">符號表</div>
-        <div class="tag purple" style="font-size:20px;padding:14px 20px;">賠付表</div>
-        <div class="tag blue" style="font-size:20px;padding:14px 20px;">特殊功能 (Free Game / Bonus)</div>
-        <div class="tag green" style="font-size:20px;padding:14px 20px;">遊戲流程圖</div>
-      </div>
-    </div>
-    <div class="card green">
-      <h3>效益</h3>
-      <p style="margin-top:16px;font-size:26px;line-height:1.8;">
-        <span style="color:#94a3b8;text-decoration:line-through;">數小時人工作業</span><br>
-        <strong style="color:#22c55e;font-size:32px;">→ 自動完成</strong>
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 11: Video Spec Chat -->
-<div class="slide light">
-  <h2>影片分析對話範例</h2>
-  <div class="sub">實際操作示範</div>
-  <div style="display:flex;gap:60px;">
-    <div class="chat" style="flex:1;">
-      <div class="bubble user">
-        <div class="role">使用者</div>
-        分析這個影片 https://youtube.com/watch?v=xxx
-      </div>
-      <div class="bubble agent">
-        <div class="role">Agent</div>
-        正在取得影片資訊...<br>遊戲名稱：<strong>Fortune Tiger</strong>
-      </div>
-      <div class="bubble agent">
-        <div class="role">Agent</div>
-        開始播放影片並截圖...<br>已截取 <strong>25 張</strong>關鍵畫面
-      </div>
-      <div class="bubble agent">
-        <div class="role">Agent</div>
-        分析完成，規格摘要：<br>
-        <div style="background:#f8fafc;padding:16px;border-radius:12px;margin-top:8px;">
-          &#x1F3B0; 5x3 板面<br>
-          &#x1F4B0; 20 條賠付線<br>
-          &#x1F4CA; RTP 96.5%<br>
-          &#x2B50; 特殊功能：Free Game + Multiplier
-        </div>
-      </div>
-      <div class="bubble agent" style="background:#f0fdf4;border:1px solid #bbf7d0;">
-        <div class="role" style="color:#22c55e;">完成</div>
-        PDF 已生成：specs/fortune-tiger/spec.pdf &#x2705;
-      </div>
-    </div>
-    <div style="flex:0.5;">
-      <div class="card purple" style="padding:30px;">
-        <h3 style="font-size:24px;margin-bottom:16px;">連接的系統</h3>
-        <div class="tags" style="flex-direction:column;">
-          <div class="tag red" style="font-size:18px;">YouTube noembed API</div>
-          <div class="tag green" style="font-size:18px;">Browser Automation (ocb)</div>
-          <div class="tag purple" style="font-size:18px;">LanceDB 記憶系統</div>
-          <div class="tag blue" style="font-size:18px;">Python Pillow + ReportLab</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 12: AI Tools -->
-<div class="slide light">
-  <h2>AI 工具推動</h2>
-  <div class="sub">提升全員工作效率</div>
-  <div class="grid2x2" style="height:calc(100% - 220px);">
-    <div class="card blue" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-      <div style="font-size:72px;margin-bottom:20px;">&#x2699;&#xFE0F;</div>
-      <h3>導入 AI 自動化</h3>
-      <p style="margin-top:12px;">將 AI 工具融入現有工作流程</p>
-    </div>
-    <div class="card orange" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-      <div style="font-size:72px;margin-bottom:20px;">&#x1F504;</div>
-      <h3>簡化重複工作</h3>
-      <p style="margin-top:12px;">讓 AI 處理低價值重複性任務</p>
-    </div>
-    <div class="card green" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-      <div style="font-size:72px;margin-bottom:20px;">&#x1F3AF;</div>
-      <h3>提高分析精準度</h3>
-      <p style="margin-top:12px;">AI 輔助數據分析與決策</p>
-    </div>
-    <div class="card purple" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-      <div style="font-size:72px;margin-bottom:20px;">&#x1F91D;</div>
-      <h3>促進團隊協作</h3>
-      <p style="margin-top:12px;">共享 AI 工具與最佳實踐</p>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 13: AM Agent -->
-<div class="slide light">
-  <h2>AM Agent (Claude Cowork)</h2>
-  <div class="sub">推動非軟體人員應用 AI</div>
-  <div class="split">
-    <div class="split-left">
-      <div class="card purple" style="height:100%;padding:50px;">
-        <h3 style="font-size:28px;margin-bottom:30px;">推動計畫</h3>
-        <div style="font-size:22px;line-height:2.2;color:#555;">
-          <div>&#x1F4BB; <strong>平台：</strong>Claude Code（共用 Claude Max 帳號）</div>
-          <div>&#x1F9D1;&#x200D;&#x1F4BC; <strong>測試者：</strong>冠杰（非軟體人員）</div>
-          <div>&#x1F3AF; <strong>目標：</strong>推動非工程師應用 AI</div>
-          <div>&#x1F527; <strong>方式：</strong>建立個人化 Skill</div>
-          <div>&#x1F4A1; <strong>適合：</strong>共用性低的個人化重複工作</div>
-        </div>
-      </div>
-    </div>
-    <div class="split-right">
-      <div class="card green" style="height:100%;padding:50px;">
-        <h3 style="font-size:28px;margin-bottom:30px;">實務測試範例</h3>
-        <div class="chat">
-          <div class="bubble user" style="font-size:20px;padding:16px 24px;">
-            <div class="role">冠杰</div>
-            幫我把這份客戶資料整理成每週報告格式
-          </div>
-          <div class="bubble agent" style="font-size:20px;padding:16px 24px;">
-            <div class="role">Agent</div>
-            好的，我來讀取資料並整理...<br>已產出報告 &#x2705;
+<!-- ==================== SLIDE 12: VIDEO SPEC CHAT ==================== -->
+<div class="slide bg-2 pad" style="position:relative">
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">影片分析對話範例</h2>
+    <p class="subtitle">實際操作示範</p>
+    <div class="flex gap-40">
+      <div style="flex:1.2">
+        <div class="bubble bubble-user"><div class="bubble-label">使用者</div>分析這個影片 https://youtube.com/watch?v=xxx</div>
+        <div class="bubble bubble-agent"><div class="bubble-label">Agent</div>正在取得影片資訊...<br>遊戲名稱：<strong>Fortune Tiger</strong></div>
+        <div class="bubble bubble-agent"><div class="bubble-label">Agent</div>開始播放影片並截圖...<br>已截取 <strong>25 張</strong>關鍵畫面</div>
+        <div class="bubble bubble-agent"><div class="bubble-label">Agent</div>分析完成：
+          <div style="background:rgba(139,92,246,0.1);padding:14px;border-radius:10px;margin-top:8px;font-size:20px">
+            5x3 板面 · 20 條賠付線 · RTP 96.5%<br>特殊功能：Free Game + Multiplier
           </div>
         </div>
-        <div style="margin-top:24px;padding:20px;background:#f0fdf4;border-radius:12px;text-align:center;">
-          <strong style="color:#22c55e;font-size:22px;">願景：每個人都有自己的 AI 工具箱</strong>
+        <div class="bubble bubble-agent" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2)"><div class="bubble-label" style="color:#86EFAC">完成</div>PDF 已生成：specs/fortune-tiger/spec.pdf ✓</div>
+      </div>
+      <div style="flex:0.5">
+        <div class="glass" style="padding:28px">
+          <h3 class="h3" style="color:#C4B5FD">連接的系統</h3>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span class="tag tag-red">YouTube noembed API</span>
+            <span class="tag tag-green">Browser Automation (ocb)</span>
+            <span class="tag tag-purple">LanceDB 記憶系統</span>
+            <span class="tag tag-blue">Python ReportLab</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Slide 14: MCP Ecosystem & Next -->
-<div class="slide light">
-  <h2>MCP 生態系 & 下一步</h2>
-  <div class="sub">Agent 與所有系統的連接全景</div>
-  <div class="split">
-    <div class="split-left">
-      <div class="card" style="height:100%;padding:40px;position:relative;">
-        <h3 style="text-align:center;margin-bottom:30px;">MCP 生態系統</h3>
-        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-          <div class="tag blue" style="font-size:18px;">BigQuery</div>
-          <div class="tag red" style="font-size:18px;">MSSQL</div>
-          <div class="tag purple" style="font-size:18px;">LanceDB</div>
-          <div class="tag cyan" style="font-size:18px;">Telegram</div>
-          <div class="tag green" style="font-size:18px;">Browser (ocb)</div>
-          <div class="tag orange" style="font-size:18px;">PM Tracker</div>
-          <div class="tag red" style="font-size:18px;">Redmine</div>
-          <div class="tag orange" style="font-size:18px;">Mantis</div>
-          <div class="tag blue" style="font-size:18px;">SharePoint</div>
-          <div class="tag purple" style="font-size:18px;">SearXNG</div>
-          <div class="tag red" style="font-size:18px;">YouTube</div>
-          <div class="tag green" style="font-size:18px;">QuickChart</div>
+<!-- ==================== SLIDE 13: AI TOOLS ==================== -->
+<div class="slide bg-1 pad" style="position:relative">
+  <div class="orb orb-3" style="opacity:0.1"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">AI 工具推動</h2>
+    <p class="subtitle">提升全員工作效率</p>
+    <div class="grid-2" style="gap:24px;height:calc(100% - 220px)">
+      <div class="glass" style="padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+        <div class="icon-circle ic-blue" style="width:72px;height:72px;font-size:32px;margin-bottom:20px">⚙</div>
+        <h3 class="h3" style="color:#93C5FD">導入 AI 自動化</h3>
+        <p class="body">將 AI 工具融入現有工作流程</p>
+      </div>
+      <div class="glass" style="padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+        <div class="icon-circle ic-orange" style="width:72px;height:72px;font-size:32px;margin-bottom:20px">↻</div>
+        <h3 class="h3" style="color:#FCD34D">簡化重複工作</h3>
+        <p class="body">讓 AI 處理低價值重複性任務</p>
+      </div>
+      <div class="glass" style="padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+        <div class="icon-circle ic-green" style="width:72px;height:72px;font-size:32px;margin-bottom:20px">◎</div>
+        <h3 class="h3" style="color:#86EFAC">提高分析精準度</h3>
+        <p class="body">AI 輔助數據分析與決策</p>
+      </div>
+      <div class="glass" style="padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+        <div class="icon-circle ic-purple" style="width:72px;height:72px;font-size:32px;margin-bottom:20px">⇄</div>
+        <h3 class="h3" style="color:#C4B5FD">促進團隊協作</h3>
+        <p class="body">共享 AI 工具與最佳實踐</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 14: AM AGENT ==================== -->
+<div class="slide bg-3 pad" style="position:relative">
+  <div class="orb orb-2" style="opacity:0.1"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">AM Agent (Claude Cowork)</h2>
+    <p class="subtitle">推動非軟體人員應用 AI</p>
+    <div class="flex gap-30">
+      <div class="glass flex-1" style="padding:40px">
+        <h3 class="h3" style="color:#C4B5FD">推動計畫</h3>
+        <div class="feature-row"><div class="feature-dot" style="background:#8B5CF6"></div><div><p style="font-size:21px"><strong style="color:var(--text)">平台</strong><span style="color:var(--text-muted)"> — Claude Code（共用 Claude Max 帳號）</span></p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#22C55E"></div><div><p style="font-size:21px"><strong style="color:var(--text)">測試者</strong><span style="color:var(--text-muted)"> — 冠杰（非軟體人員）</span></p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#3B82F6"></div><div><p style="font-size:21px"><strong style="color:var(--text)">目標</strong><span style="color:var(--text-muted)"> — 推動非工程師應用 AI</span></p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#F59E0B"></div><div><p style="font-size:21px"><strong style="color:var(--text)">方式</strong><span style="color:var(--text-muted)"> — 建立個人化 Skill</span></p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#06B6D4"></div><div><p style="font-size:21px"><strong style="color:var(--text)">適合</strong><span style="color:var(--text-muted)"> — 共用性低的個人化重複工作</span></p></div></div>
+      </div>
+      <div class="flex-1" style="display:flex;flex-direction:column;gap:20px">
+        <div class="glass" style="padding:32px;flex:1">
+          <h3 class="h3" style="color:#86EFAC">實務測試範例</h3>
+          <div class="bubble bubble-user" style="font-size:19px;padding:14px 20px;margin-bottom:12px"><div class="bubble-label">冠杰</div>幫我把這份客戶資料整理成每週報告格式</div>
+          <div class="bubble bubble-agent" style="font-size:19px;padding:14px 20px"><div class="bubble-label">Agent</div>好的，讀取資料並整理...<br>已產出報告 ✓</div>
         </div>
-        <div style="text-align:center;margin:30px 0;">
-          <div style="display:inline-block;background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:20px 40px;border-radius:50px;font-size:24px;font-weight:700;box-shadow:0 8px 24px rgba(102,126,234,0.3);">
-            AI Agent (Claude)
-          </div>
-        </div>
-        <div style="text-align:center;font-size:18px;color:#888;">
-          透過 MCP 協議，一個 Agent 安全操作多種工具與資料
+        <div class="highlight text-center" style="padding:24px">
+          <p style="font-size:22px;color:#A5B4FC;font-weight:600">願景：每個人都有自己的 AI 工具箱</p>
         </div>
       </div>
     </div>
-    <div class="split-right">
-      <div class="card" style="height:100%;padding:40px;">
-        <h3 style="margin-bottom:30px;">下一步</h3>
-        <div style="font-size:24px;line-height:2.4;">
-          <div class="roadmap-item">
-            <div class="dot"></div>
-            <span>擴展 Schema 教育到更多專案</span>
-          </div>
-          <div class="roadmap-item">
-            <div class="dot" style="background:#22c55e;"></div>
-            <span>開發更多特殊 Agent</span>
-          </div>
-          <div class="roadmap-item">
-            <div class="dot" style="background:#f59e0b;"></div>
-            <span>AI 工具普及化培訓</span>
-          </div>
-          <div class="roadmap-item">
-            <div class="dot" style="background:#ef4444;"></div>
-            <span>建立 Agent 開發最佳實踐</span>
-          </div>
-          <div class="roadmap-item" style="border:none;">
-            <div class="dot" style="background:#8b5cf6;"></div>
-            <span><strong>每個團隊都有專屬 AI Agent</strong></span>
-          </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 15: MCP ECOSYSTEM & NEXT ==================== -->
+<div class="slide bg-hero pad" style="position:relative">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">MCP 生態系 & 下一步</h2>
+    <p class="subtitle">Agent 與所有系統的連接全景</p>
+    <div class="flex gap-30">
+      <div class="glass flex-1" style="padding:36px">
+        <h3 class="h3" style="color:#A5B4FC">MCP 連接的系統</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px">
+          <span class="tag tag-blue">BigQuery</span><span class="tag tag-red">MSSQL</span>
+          <span class="tag tag-purple">LanceDB</span><span class="tag tag-cyan">Telegram</span>
+          <span class="tag tag-green">Browser (ocb)</span><span class="tag tag-orange">PM Tracker</span>
+          <span class="tag tag-red">Redmine</span><span class="tag tag-orange">Mantis</span>
+          <span class="tag tag-blue">SharePoint</span><span class="tag tag-purple">SearXNG</span>
+          <span class="tag tag-red">YouTube</span><span class="tag tag-green">QuickChart</span>
+        </div>
+        <div class="text-center">
+          <div class="glow-pill">AI Agent (Claude)</div>
+        </div>
+        <p class="small text-center" style="margin-top:16px">透過 MCP 協議，一個 Agent 安全操作多種工具與資料</p>
+      </div>
+      <div class="glass flex-1" style="padding:36px">
+        <h3 class="h3" style="color:#86EFAC">下一步</h3>
+        <div class="roadmap-item"><div class="roadmap-dot" style="background:#667EEA"></div><span style="font-size:22px">擴展 Schema 教育到更多專案</span></div>
+        <div class="roadmap-item"><div class="roadmap-dot" style="background:#22C55E"></div><span style="font-size:22px">開發更多特殊 Agent</span></div>
+        <div class="roadmap-item"><div class="roadmap-dot" style="background:#F59E0B"></div><span style="font-size:22px">AI 工具普及化培訓</span></div>
+        <div class="roadmap-item"><div class="roadmap-dot" style="background:#EF4444"></div><span style="font-size:22px">建立 Agent 開發最佳實踐</span></div>
+        <div class="roadmap-item"><div class="roadmap-dot" style="background:#8B5CF6"></div><span style="font-size:22px;font-weight:600;color:var(--text)">每個團隊都有專屬 AI Agent</span></div>
+        <div class="highlight text-center" style="margin-top:20px;padding:18px">
+          <p style="font-size:20px;color:#A5B4FC">Powered by OpenClaw + Claude</p>
         </div>
       </div>
     </div>
