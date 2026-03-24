@@ -193,7 +193,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
         <div class="icon-circle ic-orange" style="margin-bottom:24px">M</div>
         <h3 class="h3" style="color:#FCD34D">MCP / API（連接管道）</h3>
         <p class="body" style="margin-bottom:16px">Agent 存取公司系統的<strong style="color:var(--text)">安全通道</strong>。</p>
-        <p class="body">Agent 要查數據就連 BigQuery、要看專案就連 Redmine。MCP 和 API 就是這些連接的管道。</p>
+        <p class="body">Agent 要查數據就連到資料庫、要看專案進度就連到 Redmine。MCP 和 API 就是這些連接的管道。</p>
         <div style="margin-top:16px;padding:14px 20px;border-radius:12px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15)">
           <p class="small" style="color:#FCA5A5"><strong>隱私保障：</strong>模型訓練已關閉，公司資料不會被用於 AI 訓練，資料不出公司</p>
         </div>
@@ -287,7 +287,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
         </div>
         <div class="glass" style="padding:28px;text-align:center">
           <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
-            <span class="tag tag-purple">AGENTS.md</span>
+            <span class="tag tag-purple">Agent 設定檔</span>
             <span style="color:var(--text-dim)">+</span>
             <span class="tag tag-blue">MCP</span>
             <span style="color:var(--text-dim)">+</span>
@@ -314,7 +314,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
       <div class="glass" style="padding:44px;border-left:4px solid #3B82F6">
         <div class="icon-circle ic-blue" style="margin-bottom:20px">1</div>
         <h3 class="h3" style="color:#93C5FD">數據 Agent</h3>
-        <p class="body">用說的就能查數據，自動產圖表和日報。連接 BigQuery、MSSQL 等資料庫。</p>
+        <p class="body">用說的就能查數據，自動產圖表和日報。已連接公司內部多個資料庫。</p>
       </div>
       <div class="glass" style="padding:44px;border-left:4px solid #EF4444">
         <div class="icon-circle ic-red" style="margin-bottom:20px">2</div>
@@ -345,11 +345,11 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
     <div class="flex gap-30">
       <div class="glass flex-1" style="padding:36px">
         <h3 class="h3" style="color:#93C5FD">功能</h3>
-        <div class="feature-row"><div class="feature-dot" style="background:#3B82F6"></div><div><p style="font-size:20px"><strong style="color:var(--text)">自然語言查詢</strong> → 自動轉 SQL</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#3B82F6"></div><div><p style="font-size:20px"><strong style="color:var(--text)">用說的查數據</strong> — 不需要會寫程式，直接用中文問</p></div></div>
         <div class="feature-row"><div class="feature-dot" style="background:#22C55E"></div><div><p style="font-size:20px"><strong style="color:var(--text)">自動生成圖表</strong>（折線/柱狀/圓餅）</p></div></div>
-        <div class="feature-row"><div class="feature-dot" style="background:#F59E0B"></div><div><p style="font-size:20px"><strong style="color:var(--text)">Cron 日報排程</strong>，每天定時推送 Telegram</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#F59E0B"></div><div><p style="font-size:20px"><strong style="color:var(--text)">定時日報</strong> — 每天自動產出，推送到 Telegram</p></div></div>
         <div class="feature-row"><div class="feature-dot" style="background:#EF4444"></div><div><p style="font-size:20px"><strong style="color:var(--text)">成本控管</strong>：每次查詢上限 NT$60</p></div></div>
-        <div class="feature-row"><div class="feature-dot" style="background:#8B5CF6"></div><div><p style="font-size:20px"><strong style="color:var(--text)">LanceDB 記憶</strong>，記住 Schema 知識</p></div></div>
+        <div class="feature-row"><div class="feature-dot" style="background:#8B5CF6"></div><div><p style="font-size:20px"><strong style="color:var(--text)">記憶功能</strong> — 記住資料表結構，越用越聰明</p></div></div>
         <div class="highlight" style="margin-top:16px"><p style="font-size:18px;color:#93C5FD"><strong>進度：</strong>SS 專案已在進行，需各專案的資料工程師協助建立資料對照表</p></div>
         <div style="margin-top:12px;padding:12px 20px;border-radius:12px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.15)">
           <p style="font-size:17px;color:#C4B5FD">▶ 稍後現場 Demo — 直接在 Telegram 展示實際操作</p>
@@ -457,7 +457,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
     <div class="flex gap-30">
       <div class="glass flex-1" style="padding:40px">
         <h3 class="h3" style="color:#86EFAC">什麼是 AI 工具推動？</h3>
-        <p class="body" style="margin-bottom:24px">用 OpenClaw Agent 開發<strong style="color:var(--text)">對外服務</strong>的 AI 工具。底層同樣是 Agent，但因為面向外部使用者，需要額外處理權限控管和安全性。</p>
+        <p class="body" style="margin-bottom:24px">用同樣的 Agent 技術，開發<strong style="color:var(--text)">面向客戶</strong>的 AI 工具。因為是對外服務，需要額外處理權限控管和安全性。</p>
         <h3 class="h3" style="color:#FCD34D;margin-top:24px">規劃中的案例</h3>
         <div style="display:flex;flex-direction:column;gap:16px">
           <div class="glass" style="padding:20px 24px;border-radius:14px;border-left:3px solid #3B82F6">
