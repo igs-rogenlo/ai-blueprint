@@ -352,7 +352,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
       <div class="glass" style="padding:44px;border-left:4px solid #22C55E">
         <div class="icon-circle ic-green" style="margin-bottom:20px">3</div>
         <h3 class="h3" style="color:#86EFAC">AI 工具推動</h3>
-        <p class="body">針對業務需求開發 AI 驅動的工具與系統，例如 AI 客服系統等。</p>
+        <p class="body">用 Agent 開發對外服務的 AI 工具，例如 AI 客服系統。目前實驗階段，需處理權限控管。</p>
       </div>
       <div class="glass" style="padding:44px;border-left:4px solid #8B5CF6">
         <div class="icon-circle ic-purple" style="margin-bottom:20px">4</div>
@@ -584,35 +584,35 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
     <div class="flex gap-30">
       <div class="glass flex-1" style="padding:40px">
         <h3 class="h3" style="color:#86EFAC">什麼是 AI 工具推動？</h3>
-        <p class="body" style="margin-bottom:24px">當團隊有明確的業務需求時，用 AI 技術打造專屬工具來解決問題。與 Agent 不同，這些是<strong style="color:var(--text)">獨立的 AI 應用系統</strong>。</p>
-        <h3 class="h3" style="color:#FCD34D;margin-top:24px">案例</h3>
+        <p class="body" style="margin-bottom:24px">用 OpenClaw Agent 開發<strong style="color:var(--text)">對外服務</strong>的 AI 工具。底層同樣是 Agent，但因為面向外部使用者，需要額外處理權限控管和安全性。</p>
+        <h3 class="h3" style="color:#FCD34D;margin-top:24px">規劃中的案例</h3>
         <div style="display:flex;flex-direction:column;gap:16px">
           <div class="glass" style="padding:20px 24px;border-radius:14px;border-left:3px solid #3B82F6">
             <p style="font-size:22px"><strong style="color:#93C5FD">FB 客服系統</strong></p>
-            <p class="body" style="margin-top:4px">AI 驅動的 Facebook 客服機器人，自動回覆常見問題、分類客戶需求、轉派人工客服</p>
+            <p class="body" style="margin-top:4px">用 Agent 監控 FB 訊息，自動回覆常見問題、分類需求、轉派人工客服</p>
           </div>
-          <div class="glass" style="padding:20px 24px;border-radius:14px;border-left:3px solid var(--text-dim)">
-            <p style="font-size:22px"><strong style="color:var(--text-muted)">更多工具開發中...</strong></p>
-            <p class="body" style="margin-top:4px">根據各團隊的業務需求，持續規劃與開發</p>
+          <div class="glass" style="padding:20px 24px;border-radius:14px;border-left:3px solid var(--orange)">
+            <p style="font-size:22px"><strong style="color:#FCD34D">待解決的挑戰</strong></p>
+            <p class="body" style="margin-top:4px">對外開放需處理：權限控管、資料安全、回覆品質把關</p>
           </div>
         </div>
       </div>
       <div class="flex-1" style="display:flex;flex-direction:column;gap:20px">
         <div class="glass" style="padding:36px;flex:1">
-          <h3 class="h3" style="color:#C4B5FD">與 Agent 的差異</h3>
+          <h3 class="h3" style="color:#C4B5FD">內部 Agent vs 對外 AI 工具</h3>
           <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px">
             <div style="display:flex;gap:16px;align-items:flex-start">
-              <div class="icon-circle ic-blue" style="width:44px;height:44px;font-size:18px;flex-shrink:0">A</div>
-              <div><p style="font-size:20px"><strong style="color:var(--text)">Agent</strong></p><p class="small">通用型 AI 助理，透過對話互動，可處理多種任務</p></div>
+              <div class="icon-circle ic-blue" style="width:44px;height:44px;font-size:18px;flex-shrink:0">內</div>
+              <div><p style="font-size:20px"><strong style="color:var(--text)">內部 Agent</strong></p><p class="small">給內部同事使用，權限較寬鬆，已在運行中</p></div>
             </div>
             <div style="display:flex;gap:16px;align-items:flex-start">
-              <div class="icon-circle ic-green" style="width:44px;height:44px;font-size:18px;flex-shrink:0">T</div>
-              <div><p style="font-size:20px"><strong style="color:var(--text)">AI 工具</strong></p><p class="small">專門為特定業務場景打造的獨立系統，有自己的介面和流程</p></div>
+              <div class="icon-circle ic-orange" style="width:44px;height:44px;font-size:18px;flex-shrink:0">外</div>
+              <div><p style="font-size:20px"><strong style="color:var(--text)">對外 AI 工具</strong></p><p class="small">面向客戶或外部使用者，需要嚴格的權限控管和安全機制</p></div>
             </div>
           </div>
         </div>
         <div class="highlight text-center" style="padding:20px">
-          <p style="font-size:20px;color:#A5B4FC">有明確業務需求 → 規劃開發 AI 工具</p>
+          <p style="font-size:20px;color:#FCD34D">目前為實驗階段，權限控管是首要挑戰</p>
         </div>
       </div>
     </div>
