@@ -208,107 +208,9 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ==================== SLIDE 2.5: RELATIONSHIP DIAGRAM ==================== -->
-<div class="slide bg-2 pad" style="position:relative">
-  <div class="orb orb-3" style="opacity:0.1"></div>
-  <div style="position:relative;z-index:1">
-    <div class="accent-line"></div>
-    <h2 class="h2">Agent、MCP/API、Skill 的關係</h2>
-    <p class="subtitle">三者如何協作完成一個任務</p>
-
-    <!-- Diagram -->
-    <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-top:20px">
-
-      <!-- LEFT: Skills -->
-      <div style="display:flex;flex-direction:column;gap:14px;width:280px">
-        <div style="text-align:center;margin-bottom:8px">
-          <p style="font-size:22px;font-weight:700;color:#86EFAC">Skill（技能）</p>
-          <p class="small">教會 Agent 的工作流程</p>
-        </div>
-        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
-          <p style="font-size:18px;color:#86EFAC">查營收產圖表</p>
-        </div>
-        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
-          <p style="font-size:18px;color:#86EFAC">每日專案體檢</p>
-        </div>
-        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
-          <p style="font-size:18px;color:#86EFAC">影片規格分析</p>
-        </div>
-        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
-          <p style="font-size:18px;color:#86EFAC">日報排程推送</p>
-        </div>
-      </div>
-
-      <!-- Arrow: Skill → Agent -->
-      <div style="display:flex;flex-direction:column;align-items:center;width:120px">
-        <p class="small" style="margin-bottom:8px">教會</p>
-        <div style="width:80px;height:3px;background:linear-gradient(90deg,#22C55E,#667EEA);position:relative">
-          <div style="position:absolute;right:-8px;top:-5px;width:0;height:0;border-left:12px solid #667EEA;border-top:6px solid transparent;border-bottom:6px solid transparent"></div>
-        </div>
-      </div>
-
-      <!-- CENTER: Agent -->
-      <div style="width:260px;text-align:center">
-        <div style="width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(102,126,234,0.4)">
-          <p style="font-size:32px;font-weight:700;color:white">Agent</p>
-          <p style="font-size:16px;color:rgba(255,255,255,0.7)">AI 助理</p>
-        </div>
-        <div style="margin-top:16px">
-          <p class="small">接收指令 → 選擇 Skill</p>
-          <p class="small">→ 透過 MCP/API 連接系統</p>
-          <p class="small">→ 產出結果</p>
-        </div>
-      </div>
-
-      <!-- Arrow: Agent → MCP/API -->
-      <div style="display:flex;flex-direction:column;align-items:center;width:120px">
-        <p class="small" style="margin-bottom:8px">連接</p>
-        <div style="width:80px;height:3px;background:linear-gradient(90deg,#667EEA,#F59E0B);position:relative">
-          <div style="position:absolute;right:-8px;top:-5px;width:0;height:0;border-left:12px solid #F59E0B;border-top:6px solid transparent;border-bottom:6px solid transparent"></div>
-        </div>
-      </div>
-
-      <!-- RIGHT: MCP/API + Systems -->
-      <div style="width:340px">
-        <div style="text-align:center;margin-bottom:12px">
-          <p style="font-size:22px;font-weight:700;color:#FCD34D">MCP / API</p>
-          <p class="small">連接外部系統的管道</p>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
-            <p style="font-size:16px;color:#FCD34D">BigQuery</p>
-            <p style="font-size:13px;color:var(--text-dim)">資料倉儲</p>
-          </div>
-          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
-            <p style="font-size:16px;color:#FCD34D">MSSQL</p>
-            <p style="font-size:13px;color:var(--text-dim)">資料庫</p>
-          </div>
-          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
-            <p style="font-size:16px;color:#FCD34D">Telegram</p>
-            <p style="font-size:13px;color:var(--text-dim)">推送通知</p>
-          </div>
-          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
-            <p style="font-size:16px;color:#FCD34D">Redmine</p>
-            <p style="font-size:13px;color:var(--text-dim)">Bug 追蹤</p>
-          </div>
-          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
-            <p style="font-size:16px;color:#FCD34D">SharePoint</p>
-            <p style="font-size:13px;color:var(--text-dim)">文件存取</p>
-          </div>
-          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
-            <p style="font-size:16px;color:#FCD34D">YouTube</p>
-            <p style="font-size:13px;color:var(--text-dim)">影片資訊</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom explanation -->
-    <div class="highlight" style="margin-top:32px;padding:24px 32px">
-      <p style="font-size:22px;color:var(--text)"><strong>簡單來說：</strong>Skill 定義 Agent「會做什麼」，MCP/API 決定 Agent「能連到哪裡」。當你下指令，Agent 會選擇對應的 Skill，透過 MCP/API 去外部系統拿資料或執行動作，最後把結果交給你。</p>
+    <!-- Relationship summary -->
+    <div class="highlight" style="margin-top:24px;padding:20px 28px">
+      <p style="font-size:20px;color:var(--text)"><strong>三者的關係：</strong>Skill 定義 Agent「會做什麼」，MCP/API 決定 Agent「能連到哪裡」。你下指令 → Agent 選擇 Skill → 透過 MCP/API 去系統拿資料 → 把結果交給你。</p>
     </div>
   </div>
 </div>
@@ -349,51 +251,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   </div>
 </div>
 
-<!-- ==================== SLIDE 4: HOW AGENT WORKS ==================== -->
-<div class="slide bg-1 pad" style="position:relative">
-  <div class="orb orb-2" style="opacity:0.12;bottom:-300px;left:30%"></div>
-  <div style="position:relative;z-index:1">
-    <div class="accent-line"></div>
-    <h2 class="h2">Agent 怎麼運作？</h2>
-    <p class="subtitle">「幫我查上週業績做成圖表」— 五步自動完成</p>
-    <div class="flex items-center justify-center gap-20" style="margin:40px 0">
-      <div class="flow-step glass" style="padding:32px 28px;">
-        <div class="step-icon ic-blue">1</div>
-        <div class="step-title">你（使用者）</div>
-        <div class="step-desc">下達指令</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step glass" style="padding:32px 28px;">
-        <div class="step-icon ic-purple">2</div>
-        <div class="step-title">AI Agent</div>
-        <div class="step-desc">理解 + 規劃</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step glass" style="padding:32px 28px;">
-        <div class="step-icon ic-orange">3</div>
-        <div class="step-title">MCP 連接</div>
-        <div class="step-desc">安全橋接工具</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step glass" style="padding:32px 28px;">
-        <div class="step-icon ic-green">4</div>
-        <div class="step-title">工具 & 資料</div>
-        <div class="step-desc">BigQuery / MSSQL</div>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step glass" style="padding:32px 28px;">
-        <div class="step-icon ic-red">5</div>
-        <div class="step-title">產出結果</div>
-        <div class="step-desc">圖表 / 報告</div>
-      </div>
-    </div>
-    <div class="highlight text-center" style="max-width:1200px;margin:0 auto;padding:28px">
-      <p style="font-size:24px;color:var(--text-muted)">就像你跟助理說 <span style="color:#A5B4FC;font-weight:600">「幫我查上週業績做成圖表」</span>，助理會自己開電腦、查系統、做圖表、交給你</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== SLIDE 5: OPENCLAW FRAMEWORK ==================== -->
+<!-- ==================== SLIDE 4: OPENCLAW FRAMEWORK ==================== -->
 <div class="slide bg-3 pad" style="position:relative">
   <div class="orb orb-1" style="opacity:0.12;top:20%;left:-200px"></div>
   <div style="position:relative;z-index:1">
@@ -493,6 +351,9 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
         <div class="feature-row"><div class="feature-dot" style="background:#EF4444"></div><div><p style="font-size:20px"><strong style="color:var(--text)">成本控管</strong>：每次查詢上限 NT$60</p></div></div>
         <div class="feature-row"><div class="feature-dot" style="background:#8B5CF6"></div><div><p style="font-size:20px"><strong style="color:var(--text)">LanceDB 記憶</strong>，記住 Schema 知識</p></div></div>
         <div class="highlight" style="margin-top:16px"><p style="font-size:18px;color:#93C5FD"><strong>進度：</strong>SS 專案已在進行，需各專案的資料工程師協助建立資料對照表</p></div>
+        <div style="margin-top:12px;padding:12px 20px;border-radius:12px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.15)">
+          <p style="font-size:17px;color:#C4B5FD">▶ 稍後現場 Demo — 直接在 Telegram 展示實際操作</p>
+        </div>
       </div>
       <div class="flex-1" style="display:flex;flex-direction:column;gap:20px">
         <div class="glass" style="padding:36px;flex:1">
@@ -515,52 +376,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   </div>
 </div>
 
-<!-- ==================== SLIDE 8: DATA AGENT CHAT ==================== -->
-<div class="slide bg-3 pad" style="position:relative">
-  <div class="orb orb-2" style="opacity:0.1"></div>
-  <div style="position:relative;z-index:1">
-    <div class="accent-line"></div>
-    <h2 class="h2">數據 Agent 對話範例</h2>
-    <p class="subtitle">實際操作示範</p>
-    <div class="flex gap-40">
-      <div style="flex:1.2">
-        <div class="bubble bubble-user">
-          <div class="bubble-label">使用者</div>
-          給我上週 GD 專案的每日營收趨勢圖
-        </div>
-        <div class="bubble bubble-agent">
-          <div class="bubble-label">Agent</div>
-          好的，正在查詢 GD 專案上週的數據...
-        </div>
-        <div class="bubble bubble-agent">
-          <div class="bubble-label">Agent</div>
-          <div style="background:rgba(59,130,246,0.1);padding:16px;border-radius:12px;margin:8px 0">
-            <p class="small" style="color:#93C5FD">每日營收趨勢圖</p>
-            <div style="height:60px;background:linear-gradient(90deg,rgba(59,130,246,0.2),rgba(59,130,246,0.5),rgba(59,130,246,0.3));border-radius:8px;margin-top:8px"></div>
-          </div>
-          上週總營收 $2,450,000，較前週<strong style="color:#86EFAC">成長 12%</strong>，週三為高峰
-        </div>
-        <div class="bubble bubble-agent" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2)">
-          <div class="bubble-label" style="color:#86EFAC">自動推送</div>
-          已將圖表推送到 Telegram 群組 ✓
-        </div>
-      </div>
-      <div style="flex:0.6">
-        <div class="glass" style="padding:32px">
-          <h3 class="h3" style="color:#86EFAC">亮點</h3>
-          <div style="font-size:20px;line-height:2.2;color:var(--text-muted)">
-            <p>✓ 用自然語言，不需寫 SQL</p>
-            <p>✓ 自動篩選正確資料表</p>
-            <p>✓ 自動生成視覺化圖表</p>
-            <p>✓ 主動推送到 Telegram</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== SLIDE 9: PM TRACKER ==================== -->
+<!-- ==================== SLIDE 7: PM TRACKER ==================== -->
 <div class="slide bg-2 pad" style="position:relative">
   <div class="orb orb-3" style="opacity:0.1"></div>
   <div style="position:relative;z-index:1">
@@ -587,39 +403,15 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
       <div class="glass flex-1" style="padding:32px">
         <h3 class="h3" style="color:#C4B5FD">Cron 排程</h3>
         <p class="body">每天定時自動執行完整的品質審查流程：掃描 → 審查 → 產報表 → 推送 Telegram，全程無需人工介入。</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== SLIDE 10: PM TRACKER REPORT ==================== -->
-<div class="slide bg-1 pad" style="position:relative">
-  <div class="orb orb-4" style="opacity:0.1"></div>
-  <div style="position:relative;z-index:1">
-    <div class="accent-line"></div>
-    <h2 class="h2">每日報表範例</h2>
-    <p class="subtitle">Cron 每日自動產出，推送到 Telegram</p>
-    <div style="max-width:1100px;margin:0 auto">
-      <div class="glass" style="padding:48px;border-left:4px solid var(--accent)">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px">
-          <p style="font-size:22px;color:var(--text-dim)">2026-03-22 專案健康 Dashboard</p>
-          <span class="badge" style="background:rgba(245,158,11,0.15);color:#FCD34D;border-color:rgba(245,158,11,0.2)">Cron 自動產出</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:16px;font-size:22px">
-          <div class="status status-red" style="padding:18px 24px"><strong>逾期：</strong>P-042 SS老虎機 測試階段逾期 3 天</div>
-          <div class="status status-blue" style="padding:18px 24px"><strong>測試：</strong>P-038 已上線，待完成回歸測試</div>
-          <div class="status status-yellow" style="padding:18px 24px"><strong>文件：</strong>P-045 缺少測試報告</div>
-          <div class="status status-green" style="padding:18px 24px"><strong>品質：</strong>P-042 規格書內容過於簡略，建議補充細節</div>
-        </div>
-        <div style="text-align:right;margin-top:24px">
-          <span style="font-size:18px;color:#86EFAC">✓ 已自動推送至 Telegram 群組</span>
+        <div style="margin-top:16px;padding:12px 20px;border-radius:12px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.15)">
+          <p style="font-size:17px;color:#C4B5FD">▶ 稍後現場 Demo — 直接開 Telegram 看實際報表</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ==================== SLIDE 11: VIDEO SPEC ==================== -->
+<!-- ==================== SLIDE 8: VIDEO SPEC ==================== -->
 <div class="slide bg-3 pad" style="position:relative">
   <div class="orb orb-1" style="opacity:0.1;top:50%;left:-200px"></div>
   <div style="position:relative;z-index:1">
@@ -655,40 +447,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   </div>
 </div>
 
-<!-- ==================== SLIDE 12: VIDEO SPEC CHAT ==================== -->
-<div class="slide bg-2 pad" style="position:relative">
-  <div style="position:relative;z-index:1">
-    <div class="accent-line"></div>
-    <h2 class="h2">影片分析對話範例</h2>
-    <p class="subtitle">實際操作示範</p>
-    <div class="flex gap-40">
-      <div style="flex:1.2">
-        <div class="bubble bubble-user"><div class="bubble-label">使用者</div>分析這個影片 https://youtube.com/watch?v=xxx</div>
-        <div class="bubble bubble-agent"><div class="bubble-label">Agent</div>正在取得影片資訊...<br>遊戲名稱：<strong>Fortune Tiger</strong></div>
-        <div class="bubble bubble-agent"><div class="bubble-label">Agent</div>開始播放影片並截圖...<br>已截取 <strong>25 張</strong>關鍵畫面</div>
-        <div class="bubble bubble-agent"><div class="bubble-label">Agent</div>分析完成：
-          <div style="background:rgba(139,92,246,0.1);padding:14px;border-radius:10px;margin-top:8px;font-size:20px">
-            5x3 板面 · 20 條賠付線 · RTP 96.5%<br>特殊功能：Free Game + Multiplier
-          </div>
-        </div>
-        <div class="bubble bubble-agent" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2)"><div class="bubble-label" style="color:#86EFAC">完成</div>PDF 已生成：specs/fortune-tiger/spec.pdf ✓</div>
-      </div>
-      <div style="flex:0.5">
-        <div class="glass" style="padding:28px">
-          <h3 class="h3" style="color:#C4B5FD">連接的系統</h3>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-            <span class="tag tag-red">YouTube 影片資訊</span>
-            <span class="tag tag-green">瀏覽器自動播放+截圖</span>
-            <span class="tag tag-purple">記憶系統</span>
-            <span class="tag tag-blue">PDF 文件生成</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== SLIDE 13: AI TOOLS ==================== -->
+<!-- ==================== SLIDE 9: AI TOOLS ==================== -->
 <div class="slide bg-1 pad" style="position:relative">
   <div class="orb orb-3" style="opacity:0.1"></div>
   <div style="position:relative;z-index:1">
