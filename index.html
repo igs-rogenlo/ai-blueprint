@@ -164,6 +164,11 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
     <div class="badge" style="margin-bottom:32px">2026 年 3 月</div>
     <h1 class="title" style="margin-bottom:24px">AI 如何改變我們的工作</h1>
     <p style="font-size:32px;color:var(--text-muted);font-weight:300">讓 AI 成為每個人的超級助手</p>
+    <div style="margin-top:48px;display:flex;gap:40px;justify-content:center">
+      <div style="text-align:center"><p style="font-size:18px;color:rgba(255,255,255,0.5)">4 個 AI Agent 已上線運行</p></div>
+      <div style="text-align:center"><p style="font-size:18px;color:rgba(255,255,255,0.5)">連接 12+ 個內部系統</p></div>
+      <div style="text-align:center"><p style="font-size:18px;color:rgba(255,255,255,0.5)">非技術人員也能使用</p></div>
+    </div>
   </div>
 </div>
 
@@ -199,6 +204,108 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
           <p class="small" style="color:#86EFAC">例：「查營收產圖表」就是一個 Skill</p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 2.5: RELATIONSHIP DIAGRAM ==================== -->
+<div class="slide bg-2 pad" style="position:relative">
+  <div class="orb orb-3" style="opacity:0.1"></div>
+  <div style="position:relative;z-index:1">
+    <div class="accent-line"></div>
+    <h2 class="h2">Agent、MCP/API、Skill 的關係</h2>
+    <p class="subtitle">三者如何協作完成一個任務</p>
+
+    <!-- Diagram -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-top:20px">
+
+      <!-- LEFT: Skills -->
+      <div style="display:flex;flex-direction:column;gap:14px;width:280px">
+        <div style="text-align:center;margin-bottom:8px">
+          <p style="font-size:22px;font-weight:700;color:#86EFAC">Skill（技能）</p>
+          <p class="small">教會 Agent 的工作流程</p>
+        </div>
+        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
+          <p style="font-size:18px;color:#86EFAC">查營收產圖表</p>
+        </div>
+        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
+          <p style="font-size:18px;color:#86EFAC">每日專案體檢</p>
+        </div>
+        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
+          <p style="font-size:18px;color:#86EFAC">影片規格分析</p>
+        </div>
+        <div class="glass" style="padding:14px 20px;border-radius:14px;border-left:3px solid #22C55E">
+          <p style="font-size:18px;color:#86EFAC">日報排程推送</p>
+        </div>
+      </div>
+
+      <!-- Arrow: Skill → Agent -->
+      <div style="display:flex;flex-direction:column;align-items:center;width:120px">
+        <p class="small" style="margin-bottom:8px">教會</p>
+        <div style="width:80px;height:3px;background:linear-gradient(90deg,#22C55E,#667EEA);position:relative">
+          <div style="position:absolute;right:-8px;top:-5px;width:0;height:0;border-left:12px solid #667EEA;border-top:6px solid transparent;border-bottom:6px solid transparent"></div>
+        </div>
+      </div>
+
+      <!-- CENTER: Agent -->
+      <div style="width:260px;text-align:center">
+        <div style="width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(102,126,234,0.4)">
+          <p style="font-size:32px;font-weight:700;color:white">Agent</p>
+          <p style="font-size:16px;color:rgba(255,255,255,0.7)">AI 助理</p>
+        </div>
+        <div style="margin-top:16px">
+          <p class="small">接收指令 → 選擇 Skill</p>
+          <p class="small">→ 透過 MCP/API 連接系統</p>
+          <p class="small">→ 產出結果</p>
+        </div>
+      </div>
+
+      <!-- Arrow: Agent → MCP/API -->
+      <div style="display:flex;flex-direction:column;align-items:center;width:120px">
+        <p class="small" style="margin-bottom:8px">連接</p>
+        <div style="width:80px;height:3px;background:linear-gradient(90deg,#667EEA,#F59E0B);position:relative">
+          <div style="position:absolute;right:-8px;top:-5px;width:0;height:0;border-left:12px solid #F59E0B;border-top:6px solid transparent;border-bottom:6px solid transparent"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: MCP/API + Systems -->
+      <div style="width:340px">
+        <div style="text-align:center;margin-bottom:12px">
+          <p style="font-size:22px;font-weight:700;color:#FCD34D">MCP / API</p>
+          <p class="small">連接外部系統的管道</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
+            <p style="font-size:16px;color:#FCD34D">BigQuery</p>
+            <p style="font-size:13px;color:var(--text-dim)">資料倉儲</p>
+          </div>
+          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
+            <p style="font-size:16px;color:#FCD34D">MSSQL</p>
+            <p style="font-size:13px;color:var(--text-dim)">資料庫</p>
+          </div>
+          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
+            <p style="font-size:16px;color:#FCD34D">Telegram</p>
+            <p style="font-size:13px;color:var(--text-dim)">推送通知</p>
+          </div>
+          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
+            <p style="font-size:16px;color:#FCD34D">Redmine</p>
+            <p style="font-size:13px;color:var(--text-dim)">Bug 追蹤</p>
+          </div>
+          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
+            <p style="font-size:16px;color:#FCD34D">SharePoint</p>
+            <p style="font-size:13px;color:var(--text-dim)">文件存取</p>
+          </div>
+          <div class="glass" style="padding:12px 16px;border-radius:12px;border-left:3px solid #F59E0B;text-align:center">
+            <p style="font-size:16px;color:#FCD34D">YouTube</p>
+            <p style="font-size:13px;color:var(--text-dim)">影片資訊</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom explanation -->
+    <div class="highlight" style="margin-top:32px;padding:24px 32px">
+      <p style="font-size:22px;color:var(--text)"><strong>簡單來說：</strong>Skill 定義 Agent「會做什麼」，MCP/API 決定 Agent「能連到哪裡」。當你下指令，Agent 會選擇對應的 Skill，透過 MCP/API 去外部系統拿資料或執行動作，最後把結果交給你。</p>
     </div>
   </div>
 </div>
@@ -289,7 +396,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   <div style="position:relative;z-index:1">
     <div class="accent-line"></div>
     <h2 class="h2">OpenClaw 框架</h2>
-    <p class="subtitle">打造和管理所有 Agent 的基礎架構</p>
+    <p class="subtitle">我們自建的 Agent 管理平台 — 所有 Agent 都在這個框架上運行</p>
     <div class="flex gap-30">
       <div class="glass flex-1" style="padding:40px">
         <h3 class="h3" style="color:#A5B4FC">核心功能</h3>
@@ -337,7 +444,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   <div style="position:relative;z-index:1">
     <div class="accent-line"></div>
     <h2 class="h2">四大推動方向</h2>
-    <p class="subtitle">部門 AI 的全面佈局</p>
+    <p class="subtitle">目前部門 AI 的應用分為四個面向，各自解決不同的工作問題</p>
     <div class="grid-2" style="gap:24px">
       <div class="glass" style="padding:44px;border-left:4px solid #3B82F6">
         <div class="icon-circle ic-blue" style="margin-bottom:20px">1</div>
@@ -369,7 +476,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   <div style="position:relative;z-index:1">
     <div class="accent-line"></div>
     <h2 class="h2">數據 Agent</h2>
-    <p class="subtitle">用說的就能查數據 — bq-research</p>
+    <p class="subtitle">不需要會寫 SQL，用自然語言就能查數據、產圖表、排日報</p>
     <div class="flex gap-30">
       <div class="glass flex-1" style="padding:36px">
         <h3 class="h3" style="color:#93C5FD">功能</h3>
@@ -452,7 +559,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   <div style="position:relative;z-index:1">
     <div class="accent-line"></div>
     <h2 class="h2">專案追蹤 Agent</h2>
-    <p class="subtitle">每日自動體檢 — pm-tracker</p>
+    <p class="subtitle">每天自動掃描所有專案狀態，找出逾期、缺文件、品質問題，推送到 Telegram</p>
     <div class="grid-4" style="margin-bottom:28px">
       <div class="status status-red"><h4 style="font-size:22px;font-weight:700;margin-bottom:6px">逾期項目</h4><p class="small" style="color:rgba(255,255,255,0.7)">自動標記超過截止日的任務</p></div>
       <div class="status status-blue"><h4 style="font-size:22px;font-weight:700;margin-bottom:6px">上線後測試</h4><p class="small" style="color:rgba(255,255,255,0.7)">追蹤未完成測試的項目</p></div>
@@ -511,7 +618,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   <div style="position:relative;z-index:1">
     <div class="accent-line"></div>
     <h2 class="h2">競品影片分析 Agent</h2>
-    <p class="subtitle">丟影片就出規格 — video-spec</p>
+    <p class="subtitle">丟一個 YouTube 遊戲影片連結，Agent 自動分析並產出完整的遊戲規格文件</p>
     <div class="flex items-center justify-center gap-20" style="margin-bottom:36px">
       <div class="flow-step glass"><div class="step-icon ic-red">1</div><div class="step-title">YouTube 影片</div><div class="step-desc">輸入連結</div></div>
       <div class="flow-arrow">→</div>
@@ -580,7 +687,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   <div style="position:relative;z-index:1">
     <div class="accent-line"></div>
     <h2 class="h2">AI 工具推動</h2>
-    <p class="subtitle">針對業務需求，開發 AI 驅動的工具與系統</p>
+    <p class="subtitle">用 Agent 技術開發對外服務的 AI 工具 — 目前為實驗規劃階段</p>
     <div class="flex gap-30">
       <div class="glass flex-1" style="padding:40px">
         <h3 class="h3" style="color:#86EFAC">什麼是 AI 工具推動？</h3>
@@ -668,8 +775,8 @@ h1,h2,h3,h4{font-family:'Space Grotesk','Noto Sans TC',sans-serif}
   <div class="orb orb-1"></div><div class="orb orb-2"></div>
   <div style="position:relative;z-index:1">
     <div class="accent-line"></div>
-    <h2 class="h2">MCP 生態系 & 下一步</h2>
-    <p class="subtitle">Agent 與所有系統的連接全景</p>
+    <h2 class="h2">全景與下一步</h2>
+    <p class="subtitle">目前 Agent 已連接的所有系統，以及未來的推動計畫</p>
     <div class="flex gap-30">
       <div class="glass flex-1" style="padding:36px">
         <h3 class="h3" style="color:#A5B4FC">Agent 連接的所有系統</h3>
